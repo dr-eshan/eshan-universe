@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ESHAN UNIVERSE | V5.1</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --blue:#00c8ff;
+    --purple:#9b5cff;
+    --bg:#050611;
+    --text:#f3f5ff;
+    --muted:#9298b8;
+}
+
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html {scroll-behavior:smooth;}
+
+body {
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    overflow-x:hidden;
+}
+
+.space {
+    position:fixed;
+    inset:0;
+    z-index:-3;
+    background:
+    radial-gradient(ellipse at 15% 20%,rgba(0,120,255,.18),transparent 40%),
+    radial-gradient(ellipse at 85% 75%,rgba(135,35,255,.19),transparent 40%),
+    #050611;
+}
+
+.grid {
+    position:fixed;
+    inset:0;
+    z-index:-2;
+    opacity:.13;
+    background-image:
+    linear-gradient(rgba(0,200,255,.13) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,200,255,.13) 1px,transparent 1px);
+    background-size:55px 55px;
+    pointer-events:none;
+}
+
+#particles {
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    pointer-events:none;
+}
+
+/* NAVBAR */
+
+nav {
+    height:78px;
+    width:100%;
+    padding:0 8%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    background:rgba(5,6,17,.85);
+    backdrop-filter:blur(18px);
+    position:fixed;
+    top:0;
+    z-index:100;
+}
+
+.logo {
+    font-family:'Orbitron',sans-serif;
+    font-size:19px;
+    font-weight:800;
+    letter-spacing:2px;
+    cursor:pointer;
+}
+
+.logo span {color:var(--blue);}
+
+.nav-links {
+    display:flex;
+    gap:25px;
+}
+
+.nav-links button {
+    background:none;
+    border:none;
+    color:#aeb5d1;
+    font-size:11px;
+    letter-spacing:1px;
+    cursor:pointer;
+    transition:.3s;
+    font-family:'Inter',sans-serif;
+}
+
+.nav-links button:hover,
+.nav-links button.active {
+    color:var(--blue);
+    text-shadow:0 0 15px var(--blue);
+}
+
+.menu-btn {
+    display:none;
+    color:white;
+    font-size:25px;
+    cursor:pointer;
+}
+
+/* PAGE SYSTEM */
+
+.page {
+    display:none;
+    min-height:100vh;
+    padding-top:78px;
+    animation:pageEnter .5s ease;
+}
+
+.page.active {display:block;}
+
+@keyframes pageEnter {
+    from {opacity:0;transform:translateY(12px);}
+    to {opacity:1;transform:translateY(0);}
+}
+
+/* HOME */
+
+.hero {
+    min-height:calc(100vh - 78px);
+    padding:90px 8% 65px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+}
+
+.hero-content {
+    max-width:900px;
+    animation:heroEnter 1.2s ease both;
+}
+
+.status {
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:10px 18px;
+    border:1px solid rgba(0,200,255,.3);
+    background:rgba(0,200,255,.07);
+    border-radius:30px;
+    color:#9deaff;
+    font-family:'Orbitron',sans-serif;
+    font-size:10px;
+    letter-spacing:2px;
+    margin-bottom:30px;
+}
+
+.status-dot {
+    width:7px;
+    height:7px;
+    background:#00ffb3;
+    border-radius:50%;
+    box-shadow:0 0 12px #00ffb3;
+    animation:pulse 1.5s infinite;
+}
+
+.hero h1 {
+    font-family:'Orbitron',sans-serif;
+    font-size:clamp(38px,7vw,82px);
+    line-height:1.2;
+    font-weight:800;
+    letter-spacing:2px;
+}
+
+.hero h1 span {
+    background:linear-gradient(90deg,#00c8ff,#8b63ff,#e18cff);
+    background-size:200%;
+    -webkit-background-clip:text;
+    color:transparent;
+    animation:gradient 5s linear infinite;
+}
+
+.hero-description {
+    color:var(--muted);
+    max-width:650px;
+    margin:25px auto 35px;
+    font-size:15px;
+    line-height:1.9;
+}
+
+.buttons {
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn {
+    display:inline-block;
+    text-decoration:none;
+    padding:15px 27px;
+    border-radius:8px;
+    font-family:'Orbitron',sans-serif;
+    font-size:11px;
+    letter-spacing:1px;
+    transition:.3s;
+    cursor:pointer;
+}
+
+.primary {
+    background:linear-gradient(110deg,#00bfff,#8055ff);
+    color:white;
+    border:0;
+    box-shadow:0 0 25px rgba(0,170,255,.25);
+}
+
+.primary:hover {
+    transform:translateY(-5px);
+    box-shadow:0 0 35px rgba(0,170,255,.5);
+}
+
+.secondary {
+    border:1px solid rgba(255,255,255,.2);
+    color:white;
+    background:rgba(255,255,255,.04);
+}
+
+.secondary:hover {
+    border-color:var(--blue);
+    color:var(--blue);
+    transform:translateY(-5px);
+}
+
+/* ORBIT */
+
+.orbit-area {
+    height:210px;
+    width:210px;
+    margin:55px auto 0;
+    position:relative;
+    display:grid;
+    place-items:center;
+}
+
+.core {
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 30%,#fff,#00bfff 25%,#5730b8 65%,#080b20);
+    box-shadow:0 0 30px #00bfff,0 0 80px rgba(95,60,255,.7);
+    animation:corePulse 3s ease-in-out infinite;
+}
+
+.orbit {
+    position:absolute;
+    width:190px;
+    height:75px;
+    border:1px solid rgba(0,200,255,.5);
+    border-radius:50%;
+    animation:rotate 8s linear infinite;
+}
+
+.orbit.two {
+    border-color:rgba(170,90,255,.5);
+    animation:rotateReverse 11s linear infinite;
+}
+
+.orbit.three {
+    width:155px;
+    height:155px;
+    border-color:rgba(255,255,255,.12);
+}
+
+/* COMMON SECTIONS */
+
+.section {
+    padding:100px 8%;
+}
+
+.section-heading {
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.section-heading small {
+    font-family:'Orbitron',sans-serif;
+    color:var(--blue);
+    letter-spacing:3px;
+    font-size:10px;
+}
+
+.section-heading h2 {
+    font-family:'Orbitron',sans-serif;
+    font-size:clamp(25px,4vw,38px);
+    margin-top:15px;
+}
+
+.section-heading p {
+    color:var(--muted);
+    font-size:13px;
+    margin-top:12px;
+}
+
+/* CARDS */
+
+.cards {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.card {
+    padding:30px 25px;
+    min-height:220px;
+    border:1px solid rgba(255,255,255,.09);
+    background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.015));
+    border-radius:15px;
+    position:relative;
+    overflow:hidden;
+    transition:.4s;
+}
+
+.card:hover {
+    transform:translateY(-8px);
+    border-color:rgba(0,200,255,.5);
+    box-shadow:0 15px 40px rgba(0,0,0,.3);
+}
+
+.card-icon {
+    font-size:32px;
+    margin-bottom:22px;
+}
+
+.card h3 {
+    font-family:'Orbitron',sans-serif;
+    font-size:15px;
+    margin-bottom:12px;
+}
+
+.card p {
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.8;
+}
+
+.card-action {
+    margin-top:20px;
+    display:inline-block;
+    color:var(--blue);
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:1px;
+    cursor:pointer;
+    background:none;
+    border:0;
+}
+
+/* PAGE HEADER */
+
+.page-header {
+    text-align:center;
+    padding:80px 20px 45px;
+}
+
+.page-header small {
+    color:var(--blue);
+    font-family:'Orbitron',sans-serif;
+    letter-spacing:3px;
+    font-size:10px;
+}
+
+.page-header h1 {
+    font-family:'Orbitron',sans-serif;
+    font-size:clamp(30px,5vw,48px);
+    margin:18px 0;
+}
+
+.page-header p {
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.8;
+}
+
+/* MOVIE CARDS */
+
+.movie-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:22px;
+}
+
+.movie-card {
+    min-height:330px;
+    padding:30px;
+    border-radius:16px;
+    border:1px solid rgba(255,255,255,.1);
+    background:linear-gradient(145deg,rgba(0,150,255,.12),rgba(110,50,190,.12),rgba(255,255,255,.02));
+    transition:.35s;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+
+.movie-card:hover {
+    transform:translateY(-9px);
+    border-color:var(--blue);
+    box-shadow:0 15px 35px rgba(0,120,255,.13);
+}
+
+.movie-number {
+    color:var(--blue);
+    font-family:'Orbitron',sans-serif;
+    font-size:12px;
+    letter-spacing:2px;
+}
+
+.movie-card h2 {
+    font-family:'Orbitron',sans-serif;
+    font-size:21px;
+    line-height:1.5;
+    margin:25px 0 12px;
+}
+
+.movie-card p {
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.8;
+}
+
+.details-btn {
+    margin-top:25px;
+    padding:12px 16px;
+    background:rgba(0,200,255,.1);
+    border:1px solid rgba(0,200,255,.35);
+    color:var(--blue);
+    border-radius:7px;
+    cursor:pointer;
+    font-family:'Orbitron',sans-serif;
+    font-size:10px;
+    letter-spacing:1px;
+    transition:.3s;
+}
+
+.details-btn:hover {
+    background:var(--blue);
+    color:#050611;
+}
+
+/* DETAIL VIEW */
+
+.detail-box {
+    max-width:850px;
+    margin:0 auto 90px;
+    padding:35px;
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(0,200,255,.25);
+    border-radius:16px;
+    box-shadow:0 0 35px rgba(0,100,255,.08);
+}
+
+.detail-box h2 {
+    font-family:'Orbitron',sans-serif;
+    font-size:clamp(22px,4vw,34px);
+    margin:15px 0;
+}
+
+.detail-box h3 {
+    color:var(--blue);
+    font-family:'Orbitron',sans-serif;
+    font-size:13px;
+    margin:28px 0 12px;
+}
+
+.detail-box p {
+    color:#b3bad3;
+    font-size:13px;
+    line-height:2;
+}
+
+.detail-label {
+    color:var(--blue);
+    font-size:10px;
+    letter-spacing:2px;
+    font-family:'Orbitron',sans-serif;
+}
+
+.back-btn {
+    margin-top:30px;
+}
+
+/* CHARACTER CARDS */
+
+.character-card {
+    text-align:center;
+    padding:30px 20px;
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:15px;
+    transition:.3s;
+}
+
+.character-card:hover {
+    transform:translateY(-8px);
+    border-color:var(--purple);
+}
+
+.character-avatar {
+    width:100px;
+    height:100px;
+    margin:0 auto 20px;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    font-size:38px;
+    background:radial-gradient(circle,#273b75,#101329);
+    border:2px solid rgba(0,200,255,.5);
+    box-shadow:0 0 25px rgba(0,150,255,.2);
+}
+
+.character-card h3 {
+    font-family:'Orbitron',sans-serif;
+    font-size:14px;
+    margin-bottom:10px;
+}
+
+.character-card p {
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.7;
+}
+
+/* TIMELINE */
+
+.timeline {
+    max-width:750px;
+    margin:auto;
+    border-left:2px solid rgba(0,200,255,.35);
+    padding-left:30px;
+}
+
+.timeline-item {
+    position:relative;
+    margin-bottom:35px;
+    padding:25px;
+    border:1px solid rgba(255,255,255,.09);
+    background:rgba(255,255,255,.035);
+    border-radius:12px;
+}
+
+.timeline-item::before {
+    content:"";
+    position:absolute;
+    left:-38px;
+    top:30px;
+    width:13px;
+    height:13px;
+    background:var(--blue);
+    border-radius:50%;
+    box-shadow:0 0 15px var(--blue);
+}
+
+.timeline-item h3 {
+    font-family:'Orbitron',sans-serif;
+    font-size:14px;
+    margin-bottom:10px;
+}
+
+.timeline-item p {
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.8;
+}
+
+/* ARCHIVE */
+
+.archive-box {
+    max-width:750px;
+    margin:0 auto 90px;
+    padding:45px 30px;
+    text-align:center;
+    border:1px solid rgba(160,90,255,.4);
+    background:linear-gradient(145deg,rgba(70,35,140,.18),rgba(0,120,255,.08));
+    border-radius:18px;
+}
+
+.archive-icon {
+    font-size:55px;
+    margin-bottom:20px;
+}
+
+.archive-box h2 {
+    font-family:'Orbitron',sans-serif;
+    margin-bottom:15px;
+}
+
+.archive-box p {
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.9;
+}
+
+/* ABOUT */
+
+.about-box {
+    max-width:750px;
+    margin:0 auto 90px;
+    text-align:center;
+    padding:45px 30px;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:16px;
+    background:rgba(255,255,255,.035);
+}
+
+.about-box h2 {
+    font-family:'Orbitron',sans-serif;
+    margin-bottom:18px;
+}
+
+.about-box p {
+    color:var(--muted);
+    font-size:13px;
+    line-height:2;
+}
+
+/* FOOTER */
+
+footer {
+    text-align:center;
+    padding:35px 15px;
+    color:#737b9b;
+    font-size:11px;
+    line-height:2;
+    border-top:1px solid rgba(255,255,255,.07);
+}
+
+footer span {color:var(--blue);}
+
+/* ANIMATIONS */
+
+@keyframes heroEnter {
+    from {opacity:0;transform:translateY(35px);}
+    to {opacity:1;transform:translateY(0);}
+}
+
+@keyframes pulse {
+    50% {opacity:.3;}
+}
+
+@keyframes gradient {
+    to {background-position:200% center;}
+}
+
+@keyframes corePulse {
+    50% {transform:scale(1.12);filter:brightness(1.3);}
+}
+
+@keyframes rotate {
+    to {transform:rotate(330deg);}
+}
+
+@keyframes rotateReverse {
+    to {transform:rotate(-305deg);}
+}
+
+/* MOBILE */
+
+@media(max-width:700px) {
+    nav {padding:0 6%;height:70px;}
+    .menu-btn {display:block;}
+
+    .nav-links {
+        display:none;
+        position:absolute;
+        top:70px;
+        left:0;
+        width:100%;
+        padding:25px;
+        background:rgba(5,6,17,.98);
+        flex-direction:column;
+        text-align:center;
+        border-bottom:1px solid rgba(255,255,255,.1);
+    }
+
+    .nav-links.active {display:flex;}
+    .hero {padding-top:80px;}
+    .hero-description {font-size:13px;}
+    .section {padding:75px 6%;}
+    .detail-box {padding:25px 20px;margin:0 6% 70px;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="space"></div>
+<div class="grid"></div>
+<canvas id="particles"></canvas>
+
+<!-- NAVBAR -->
+
+<nav>
+    <div class="logo" onclick="showPage('home')">
+        ESHAN<span>.</span>UNIVERSE
+    </div>
+
+    <div class="nav-links" id="navLinks">
+        <button class="active" data-page="home" onclick="showPage('home')">HOME</button>
+        <button data-page="movies" onclick="showPage('movies')">MOVIES</button>
+        <button data-page="characters" onclick="showPage('characters')">CHARACTERS</button>
+        <button data-page="timeline" onclick="showPage('timeline')">TIMELINE</button>
+        <button data-page="archive" onclick="showPage('archive')">ARCHIVE</button>
+        <button data-page="about" onclick="showPage('about')">ABOUT</button>
+    </div>
+
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+</nav>
+
+<!-- HOME PAGE -->
+
+<main id="home" class="page active">
+
+<header class="hero">
+    <div class="hero-content">
+
+        <div class="status">
+            <span class="status-dot"></span>
+            SYSTEM ONLINE — V5.1
+        </div>
+
+        <h1>
+            WELCOME TO<br>
+            <span>ESHAN UNIVERSE</span>
+        </h1>
+
+        <p class="hero-description">
+            Beyond imagination. Beyond reality.
+            Enter a universe of artificial intelligence,
+            extraordinary characters, powerful stories
+            and infinite possibilities.
+        </p>
+
+        <div class="buttons">
+            <button class="btn primary" onclick="showPage('movies')">
+                EXPLORE MOVIES ↗
+            </button>
+
+            <button class="btn secondary" onclick="showPage('characters')">
+                MEET CHARACTERS
+            </button>
+        </div>
+
+        <div class="orbit-area">
+            <div class="orbit"></div>
+            <div class="orbit two"></div>
+            <div class="orbit three"></div>
+            <div class="core"></div>
+        </div>
+
+    </div>
+</header>
+
+<section class="section">
+
+    <div class="section-heading">
+        <small>DISCOVER THE UNKNOWN</small>
+        <h2>EXPLORE THE UNIVERSE</h2>
+        <p>Every universe has a story. This one has no limits.</p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="card-icon">🎬</div>
+            <h3>THE MOVIES</h3>
+            <p>Discover cinematic stories, legendary characters and the history of the AI universe.</p>
+            <button class="card-action" onclick="showPage('movies')">EXPLORE MOVIES →</button>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🤖</div>
+            <h3>CHARACTERS</h3>
+            <p>Meet powerful AI beings, humans, heroes and mysterious villains.</p>
+            <button class="card-action" onclick="showPage('characters')">VIEW CHARACTERS →</button>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">⌛</div>
+            <h3>TIMELINE</h3>
+            <p>Explore important events that shaped the Eshan Universe.</p>
+            <button class="card-action" onclick="showPage('timeline')">OPEN TIMELINE →</button>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🔐</div>
+            <h3>CLASSIFIED ARCHIVE</h3>
+            <p>Discover mysterious records and Project Infinity Core.</p>
+            <button class="card-action" onclick="showPage('archive')">ACCESS ARCHIVE →</button>
+        </div>
+
+    </div>
+</section>
+
+<section class="section" style="text-align:center;border-top:1px solid rgba(255,255,255,.06)">
+    <div class="section-heading">
+        <small>ONE UNIVERSE — INFINITE STORIES</small>
+        <h2>THE AGE OF AI BEGINS</h2>
+        <p>A world where technology becomes something extraordinary.</p>
+    </div>
+</section>
+
+</main>
+
+<!-- MOVIES PAGE -->
+
+<main id="movies" class="page">
+
+    <div class="page-header">
+        <small>ESHAN UNIVERSE CINEMATIC WORLD</small>
+        <h1>MOVIE LIBRARY</h1>
+        <p>Explore every movie and discover its story.</p>
+    </div>
+
+    <section class="section" style="padding-top:10px">
+
+        <div class="movie-grid">
+
+            <div class="movie-card">
+                <div>
+                    <div class="movie-number">MOVIE 001</div>
+                    <h2>THE AGE OF AI</h2>
+                    <p>The beginning of a new era. A world where artificial intelligence changes everything.</p>
+                </div>
+                <button class="details-btn" onclick="openMovie(0)">VIEW DETAILS ↗</button>
+            </div>
+
+            <div class="movie-card">
+                <div>
+                    <div class="movie-number">MOVIE 002</div>
+                    <h2>THE JARVIS QUEST</h2>
+                    <p>A journey of discovery, powerful technology and an extraordinary AI.</p>
+                </div>
+                <button class="details-btn" onclick="openMovie(1)">VIEW DETAILS ↗</button>
+            </div>
+
+            <div class="movie-card">
+                <div>
+                    <div class="movie-number">MOVIE 003</div>
+                    <h2>THE RISE OF EARTH</h2>
+                    <p>A new chapter begins as Earth faces a future full of unknown possibilities.</p>
+                </div>
+                <button class="details-btn" onclick="openMovie(2)">VIEW DETAILS ↗</button>
+            </div>
+
+            <div class="movie-card">
+                <div>
+                    <div class="movie-number">SPECIAL PROJECT</div>
+                    <h2>PROJECT INFINITY CORE</h2>
+                    <p>A classified project containing secrets that could change the entire universe.</p>
+                </div>
+                <button class="details-btn" onclick="openMovie(3)">VIEW DETAILS ↗</button>
+            </div>
+
+        </div>
+
+    </section>
+
+    <div id="movieDetail" class="detail-box" style="display:none">
+        <div class="detail-label" id="movieNumber">MOVIE DETAILS</div>
+        <h2 id="movieTitle"></h2>
+
+        <h3>STORY SUMMARY</h3>
+        <p id="movieSummary"></p>
+
+        <h3>UNIVERSE CONNECTION</h3>
+        <p id="movieConnection"></p>
+
+        <h3>STATUS</h3>
+        <p id="movieStatus"></p>
+
+        <button class="btn secondary back-btn" onclick="closeMovie()">
+            ← BACK TO MOVIES
+        </button>
+    </div>
+
+</main>
+
+<!-- CHARACTERS PAGE -->
+
+<main id="characters" class="page">
+
+    <div class="page-header">
+        <small>THE BEINGS OF THIS UNIVERSE</small>
+        <h1>CHARACTER DATABASE</h1>
+        <p>Meet the humans, artificial intelligence and mysterious beings.</p>
+    </div>
+
+    <section class="section" style="padding-top:10px">
+
+        <div class="cards">
+
+            <div class="character-card">
+                <div class="character-avatar">👤</div>
+                <h3>ESHAN</h3>
+                <p>Human • Creator<br>The mind behind the universe.</p>
+            </div>
+
+            <div class="character-card">
+                <div class="character-avatar">🤖</div>
+                <h3>JARVIS</h3>
+                <p>Advanced AI • Powerful humanoid robot.</p>
+            </div>
+
+            <div class="character-card">
+                <div class="character-avatar">⚡</div>
+                <h3>GPT</h3>
+                <p>Advanced AI • Intelligent and strategic.</p>
+            </div>
+
+            <div class="character-card">
+                <div class="character-avatar">🌌</div>
+                <h3>SORA</h3>
+                <p>Premium AI • Futuristic intelligence.</p>
+            </div>
+
+            <div class="character-card">
+                <div class="character-avatar">🟣</div>
+                <h3>GALAXYUS</h3>
+                <p>Cosmic AI • Mysterious energy.</p>
+            </div>
+
+            <div class="character-card">
+                <div class="character-avatar">❄️</div>
+                <h3>GLACIER</h3>
+                <p>Ice-themed AI • Cold and powerful.</p>
+            </div>
+
+            <div class="character-card">
+                <div class="character-avatar">🔴</div>
+                <h3>DR. OCTOPUS</h3>
+                <p>Villain • Dark red and black AI.</p>
+            </div>
+
+            <div class="character-card">
+                <div class="character-avatar">🦾</div>
+                <h3>THE PROTOTYPE</h3>
+                <p>Experimental AI • Unknown potential.</p>
+            </div>
+
+            <div class="character-card">
+                <div class="character-avatar">👤</div>
+                <h3>MUSKAN</h3>
+                <p>Human • Part of the universe story.</p>
+            </div>
+
+        </div>
+
+    </section>
+</main>
+
+<!-- TIMELINE PAGE -->
+
+<main id="timeline" class="page">
+
+    <div class="page-header">
+        <small>HISTORY OF THE UNIVERSE</small>
+        <h1>UNIVERSE TIMELINE</h1>
+        <p>Important chapters and events from the Eshan Universe.</p>
+    </div>
+
+    <section class="section" style="padding-top:10px">
+
+        <div class="timeline">
+
+            <div class="timeline-item">
+                <h3>01 — THE BEGINNING</h3>
+                <p>The first ideas of the Eshan Universe emerge. A new fictional world begins to take shape.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>02 — THE AGE OF AI</h3>
+                <p>Artificial intelligence becomes a central part of the universe and its stories.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>03 — THE JARVIS QUEST</h3>
+                <p>Jarvis enters the spotlight and begins an extraordinary journey.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>04 — THE RISE OF EARTH</h3>
+                <p>Earth enters a new chapter filled with challenges and discoveries.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>05 — PROJECT INFINITY CORE</h3>
+                <p>A mysterious project becomes one of the most important secrets in the universe.</p>
+            </div>
+
+        </div>
+
+    </section>
+</main>
+
+<!-- ARCHIVE PAGE -->
+
+<main id="archive" class="page">
+
+    <div class="page-header">
+        <small>RESTRICTED ACCESS</small>
+        <h1>CLASSIFIED ARCHIVE</h1>
+        <p>Some secrets are not meant to be discovered easily.</p>
+    </div>
+
+    <div class="archive-box">
+        <div class="archive-icon">🔐</div>
+        <div class="detail-label">CLASSIFIED PROJECT 001</div>
+        <h2>PROJECT INFINITY CORE</h2>
+
+        <p>
+            A mysterious classified project inside the Eshan Universe.
+            Its purpose, origin and full capabilities remain unknown.
+            Only selected records are available in this archive.
+        </p>
+
+        <h3 style="color:var(--blue);font-family:'Orbitron';margin:25px 0 12px">
+            ACCESS STATUS: RESTRICTED
+        </h3>
+
+        <p>More classified information will be added in future updates.</p>
+    </div>
+
+</main>
+
+<!-- ABOUT PAGE -->
+
+<main id="about" class="page">
+
+    <div class="page-header">
+        <small>THE CREATOR</small>
+        <h1>ABOUT THE UNIVERSE</h1>
+        <p>A fictional world built with imagination and creativity.</p>
+    </div>
+
+    <div class="about-box">
+        <h2>ESHAN UNIVERSE</h2>
+
+        <p>
+            Eshan Universe is a fictional cinematic world featuring
+            artificial intelligence, humans, mysterious projects,
+            extraordinary characters and connected stories.
+            <br><br>
+            This universe is still growing.
+            New stories, characters and discoveries are waiting
+            to become part of its history.
+        </p>
+
+        <br>
+
+        <button class="btn primary" onclick="showPage('home')">
+            BACK TO HOME
+        </button>
+    </div>
+
+</main>
+
+<footer>
+    © 2026 <span>ESHAN UNIVERSE</span> — ALL RIGHTS RESERVED<br>
+    VERSION 5.1 | THE NEXT EVOLUTION
+</footer>
+
+<script>
+
+/* PAGE NAVIGATION */
+
+function showPage(pageId) {
+
+    document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+    });
+
+    const selectedPage = document.getElementById(pageId);
+
+    if(selectedPage) {
+        selectedPage.classList.add('active');
+    }
+
+    document.querySelectorAll('.nav-links button').forEach(button => {
+        button.classList.toggle(
+            'active',
+            button.dataset.page === pageId
+        );
+    });
+
+    document.getElementById('navLinks').classList.remove('active');
+
+    window.scrollTo({
+        top:0,
+        behavior:'smooth'
+    });
+}
+
+/* MOBILE MENU */
+
+function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('active');
+}
+
+/* MOVIE DATABASE */
+
+const movies = [
+
+    {
+        number:"MOVIE 001",
+        title:"THE AGE OF AI",
+        summary:"The Age of AI introduces a fictional world where artificial intelligence becomes more than ordinary technology. New AI beings, extraordinary abilities and powerful discoveries begin to change the direction of the world. It is the beginning of a much larger story.",
+        connection:"This movie establishes the foundation of the Eshan Universe and introduces the world in which future stories take place.",
+        status:"UNIVERSE FOUNDATION"
+    },
+
+    {
+        number:"MOVIE 002",
+        title:"THE JARVIS QUEST",
+        summary:"The Jarvis Quest follows Jarvis, an advanced humanoid AI, on an extraordinary journey. As the story develops, new mysteries, abilities and possibilities begin to emerge. Jarvis is not an ordinary machine — he is a major force in this universe.",
+        connection:"This chapter expands the AI world introduced in The Age of AI and gives Jarvis his own journey.",
+        status:"CHARACTER STORY"
+    },
+
+    {
+        number:"MOVIE 003",
+        title:"THE RISE OF EARTH",
+        summary:"The Rise of Earth explores a new chapter in the Eshan Universe. The world faces an uncertain future as technology, humanity and powerful new developments become increasingly connected.",
+        connection:"This story expands the universe beyond its earlier chapters and explores the future of Earth.",
+        status:"WORLD EXPANSION"
+    },
+
+    {
+        number:"SPECIAL PROJECT",
+        title:"PROJECT INFINITY CORE",
+        summary:"Project Infinity Core is one of the most mysterious elements of the Eshan Universe. Its origin, purpose and full potential remain classified. The project is connected to the deeper secrets of this fictional world.",
+        connection:"This classified project connects to the wider universe and its hidden mysteries.",
+        status:"CLASSIFIED"
+    }
+
+];
+
+/* OPEN MOVIE DETAILS */
+
+function openMovie(index) {
+
+    const movie = movies[index];
+
+    if(!movie) return;
+
+    document.getElementById('movieNumber').textContent = movie.number;
+    document.getElementById('movieTitle').textContent = movie.title;
+    document.getElementById('movieSummary').textContent = movie.summary;
+    document.getElementById('movieConnection').textContent = movie.connection;
+    document.getElementById('movieStatus').textContent = movie.status;
+
+    const detail = document.getElementById('movieDetail');
+
+    detail.style.display = 'block';
+
+    setTimeout(() => {
+        detail.scrollIntoView({
+            behavior:'smooth',
+            block:'start'
+        });
+    },100);
+}
+
+/* CLOSE MOVIE DETAILS */
+
+function closeMovie() {
+
+    document.getElementById('movieDetail').style.display = 'none';
+
+    window.scrollTo({
+        top:0,
+        behavior:'smooth'
+    });
+}
+
+/* PARTICLE ANIMATION */
+
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+
+let particles = [];
+
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+for(let i=0;i<85;i++) {
+
+    particles.push({
+        x:Math.random()*canvas.width,
+        y:Math.random()*canvas.height,
+        size:Math.random()*1.8+.3,
+        speed:Math.random()*.35+.08,
+        opacity:Math.random()*.7+.2
+    });
+
+}
+
+function animateParticles() {
+
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    particles.forEach(p => {
+
+        p.y -= p.speed;
+
+        if(p.y < 0) {
+            p.y = canvas.height;
+            p.x = Math.random()*canvas.width;
+        }
+
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+        ctx.fillStyle = `rgba(130,190,255,${p.opacity})`;
+        ctx.fill();
+
+    });
+
+    requestAnimationFrame(animateParticles);
+}
+
+animateParticles();
+
+</script>
+
+</body>
+</html>

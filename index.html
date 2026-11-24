@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ESHAN'S UNIVERSE | V6.2</title>
+<title>ESHAN'S UNIVERSE | V6.4</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
@@ -15,7 +15,6 @@ body{background:var(--bg);color:var(--text);font-family:Inter,sans-serif;min-hei
 body::before{content:"";position:fixed;inset:0;z-index:-3;background:radial-gradient(ellipse at 15% 20%,rgba(28,89,170,.18),transparent 40%),radial-gradient(ellipse at 85% 75%,rgba(110,45,180,.15),transparent 40%),linear-gradient(135deg,#050711,#080d1c 55%,#060817)}
 #particles{position:fixed;inset:0;width:100%;height:100%;z-index:-2;pointer-events:none}
 .grid-bg{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.13;background-image:linear-gradient(rgba(70,160,255,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(70,160,255,.12) 1px,transparent 1px);background-size:55px 55px;mask-image:linear-gradient(to bottom,black,transparent 90%)}
-
 #loader{position:fixed;inset:0;z-index:9999;background:#040711;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:20px;transition:opacity .8s,visibility .8s}
 #loader.hide{opacity:0;visibility:hidden;pointer-events:none}
 .loader-logo{width:100%;font-family:Orbitron,sans-serif;font-size:clamp(20px,5vw,48px);font-weight:800;letter-spacing:clamp(2px,.7vw,5px);color:white;text-align:center;text-shadow:0 0 25px var(--cyan);animation:loaderPulse 1.5s infinite alternate}
@@ -24,7 +23,6 @@ body::before{content:"";position:fixed;inset:0;z-index:-3;background:radial-grad
 .loader-small{margin-top:15px;color:var(--muted);font-size:10px;letter-spacing:4px;text-align:center}
 @keyframes loading{from{transform:translateX(-100%)}to{transform:translateX(230%)}}
 @keyframes loaderPulse{from{opacity:.5}to{opacity:1}}
-
 header{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:15px 5%;background:rgba(5,8,19,.82);backdrop-filter:blur(18px);border-bottom:1px solid rgba(100,190,255,.1)}
 .navbar{max-width:1450px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:15px}
 .brand{font-family:Orbitron,sans-serif;font-size:15px;font-weight:800;letter-spacing:1.5px;color:white;cursor:pointer;white-space:nowrap}
@@ -35,7 +33,6 @@ header{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:15px 5%;backg
 .nav-status{font-size:9px;color:#6ef3b0;letter-spacing:1px;display:flex;align-items:center;gap:7px;white-space:nowrap}
 .status-dot{width:6px;height:6px;border-radius:50%;background:#52f3a3;box-shadow:0 0 10px #52f3a3;animation:blink 1.5s infinite;flex:none}
 @keyframes blink{50%{opacity:.3}}
-
 main{padding-top:80px;min-height:100vh}
 .page{display:none;min-height:calc(100vh - 80px);padding:55px 7% 75px;animation:pageIn .65s ease both}
 .page.active{display:block}
@@ -45,12 +42,10 @@ main{padding-top:80px;min-height:100vh}
 .section-title{font-family:Orbitron,sans-serif;font-size:clamp(26px,4vw,43px);line-height:1.3;margin-bottom:15px}
 .section-desc{color:var(--muted);max-width:650px;line-height:1.8;font-size:13px}
 .accent{color:var(--cyan)}
-
 .btn{border:1px solid rgba(66,234,255,.55);background:linear-gradient(110deg,rgba(44,177,255,.18),rgba(113,75,255,.16));color:white;padding:14px 22px;border-radius:6px;font-family:Orbitron,sans-serif;font-size:10px;letter-spacing:1.2px;cursor:pointer;transition:.3s}
 .btn:hover{transform:translateY(-3px);box-shadow:0 0 25px rgba(66,234,255,.25);border-color:var(--cyan)}
 .btn.secondary{background:rgba(255,255,255,.025);border-color:rgba(255,255,255,.15)}
 .btn.danger{border-color:rgba(255,65,90,.6);background:rgba(255,30,60,.1)}
-
 .card{background:linear-gradient(145deg,rgba(18,30,54,.83),rgba(8,13,28,.9));border:1px solid var(--border);border-radius:13px;padding:25px;transition:transform .35s,border-color .35s,box-shadow .35s;position:relative;overflow:hidden}
 .card:hover{transform:translateY(-5px);border-color:rgba(66,234,255,.5);box-shadow:var(--glow)}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-top:35px}
@@ -58,7 +53,6 @@ main{padding-top:80px;min-height:100vh}
 .card h3{font-family:Orbitron,sans-serif;font-size:14px;margin-bottom:12px}
 .card p{color:var(--muted);font-size:12px;line-height:1.8}
 .card-action{color:var(--cyan);font-size:10px;letter-spacing:1px;margin-top:20px;display:block}
-
 #home{padding-top:45px;overflow:hidden}
 #home.active{display:flex;align-items:center;justify-content:center}
 .hero{width:100%;max-width:1250px;margin:auto;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:25px}
@@ -69,7 +63,6 @@ main{padding-top:80px;min-height:100vh}
 .hero h2{font-family:Orbitron,sans-serif;font-size:clamp(14px,2vw,19px);line-height:1.6;letter-spacing:2px;margin-top:25px;color:#c9d8ef}
 .hero p{color:var(--muted);max-width:510px;line-height:1.9;font-size:13px;margin-top:17px}
 .hero-actions{display:flex;flex-wrap:wrap;gap:13px;margin-top:32px}
-
 .core-area{min-height:420px;display:flex;justify-content:center;align-items:center;position:relative}
 .core{width:245px;height:245px;position:relative;display:flex;justify-content:center;align-items:center;animation:float 5s ease-in-out infinite}
 .core-center{width:105px;height:105px;border-radius:50%;background:radial-gradient(circle,#b9ffff 0%,#3ddfff 15%,#1764c5 45%,#09152d 75%);box-shadow:0 0 25px #29caff,0 0 70px rgba(32,148,255,.5),inset 0 0 20px white;animation:corePulse 2.5s infinite alternate}
@@ -83,29 +76,20 @@ main{padding-top:80px;min-height:100vh}
 @keyframes spinReverse{to{transform:rotate(-360deg)}}
 @keyframes float{50%{transform:translateY(-15px)}}
 @keyframes corePulse{to{box-shadow:0 0 45px #29caff,0 0 100px rgba(32,148,255,.7),inset 0 0 25px white}}
-
 .feature-grid .card{min-height:190px;cursor:pointer}
 .back-btn{margin-bottom:30px;color:var(--cyan);background:transparent;border:0;font-size:11px;letter-spacing:1px;cursor:pointer}
-.movie-card,.character-card{cursor:pointer}
 .movie-number{font-family:Orbitron,sans-serif;color:var(--cyan);font-size:11px;letter-spacing:2px;margin-bottom:20px}
-.movie-detail{margin-top:20px;padding:20px;background:rgba(35,80,130,.12);border:1px solid var(--border);border-radius:10px;display:none;line-height:1.8;font-size:13px;color:#b5c7dd}
-.movie-detail.show{display:block;animation:pageIn .4s}
-.character-card{min-height:180px}
-.character-role{color:var(--cyan);font-size:10px;letter-spacing:1px;margin-top:12px}
-
 .timeline{margin:45px auto 0;max-width:850px;position:relative}
 .timeline::before{content:"";position:absolute;left:13px;top:5px;bottom:5px;width:1px;background:linear-gradient(var(--cyan),var(--purple),transparent)}
-.timeline-item{position:relative;padding:0 0 35px 48px}
+.timeline-item{position:relative;padding:0 0 35px 48px;cursor:pointer}
 .timeline-item::before{content:"";position:absolute;left:7px;top:4px;width:13px;height:13px;border-radius:50%;background:var(--cyan);box-shadow:0 0 15px var(--cyan)}
 .timeline-item h3{font-family:Orbitron,sans-serif;font-size:14px;margin-bottom:9px}
 .timeline-item p{color:var(--muted);font-size:12px;line-height:1.7}
-
 .archive-box{max-width:650px;margin:40px auto;text-align:center;border:1px solid rgba(255,70,90,.35);background:linear-gradient(145deg,rgba(55,15,35,.4),rgba(12,15,30,.9));border-radius:15px;padding:40px 25px;box-shadow:0 0 35px rgba(255,30,60,.07)}
 .archive-icon{font-size:45px;margin-bottom:20px}
 .archive-input{display:block;width:100%;max-width:230px;margin:20px auto 12px;padding:13px;background:#080d1b;border:1px solid rgba(255,80,100,.4);color:white;text-align:center;border-radius:6px;outline:none;letter-spacing:5px}
 .archive-message{font-size:11px;color:#ff8796;margin-top:15px;min-height:18px}
 .archive-warning{font-size:10px;color:#8d9ab0;margin-top:25px;line-height:1.7}
-
 #jarvis{padding-top:45px}
 .jarvis-layout{display:grid;grid-template-columns:.9fr 1.1fr;gap:25px;margin-top:30px}
 .jarvis-core-panel{min-height:430px;display:flex;flex-direction:column;align-items:center;justify-content:center}
@@ -137,13 +121,24 @@ main{padding-top:80px;min-height:100vh}
 .history strong{color:#c7d8ec}
 .about-panel{max-width:850px;margin-top:35px;line-height:2;color:#a9bad0;font-size:13px}
 .about-panel p{margin-bottom:17px}
-
+.updates-grid .card{min-height:180px}
+.update-date{font-family:Orbitron,sans-serif;color:var(--cyan);font-size:9px;letter-spacing:2px;margin-bottom:15px}
+.story-card{cursor:pointer;min-height:210px;display:flex;flex-direction:column;justify-content:space-between}
+.story-status{display:inline-block;margin-top:20px;padding:7px 11px;border:1px solid rgba(255,190,80,.3);border-radius:30px;color:#ffc86b;font-size:9px;letter-spacing:2px;width:max-content}
+.gateway-card{max-width:760px;margin:45px auto;padding:45px 30px;text-align:center;cursor:pointer}
+.gateway-card .card-icon{font-size:42px}
+.gateway-card h3{font-size:clamp(17px,3vw,25px);line-height:1.5}
+.coming-soon-box{max-width:800px;margin:45px auto;text-align:center;padding:55px 25px;border:1px solid var(--border);border-radius:16px;background:linear-gradient(145deg,rgba(20,40,70,.6),rgba(8,13,28,.9));box-shadow:var(--glow)}
+.coming-soon-mark{font-family:Orbitron,sans-serif;font-size:clamp(30px,7vw,65px);font-weight:800;color:var(--cyan);text-shadow:0 0 30px rgba(66,234,255,.4);margin:20px 0}
+.coming-soon-box p{color:var(--muted);font-size:13px;line-height:1.9;max-width:550px;margin:0 auto 25px}
+.timeline-item.active h3{color:var(--cyan)}
+.timeline-detail{display:none;margin-top:10px;padding:13px 16px;border-left:2px solid var(--cyan);background:rgba(45,150,210,.08);color:#b5c7dd;font-size:12px;line-height:1.8}
+.timeline-item.active .timeline-detail{display:block}
 body.red-alert{--cyan:#ff526d;--blue:#ff3457;--purple:#ff7a4e;--border:rgba(255,65,85,.25)}
 body.red-alert::before{background:radial-gradient(ellipse at 15% 20%,rgba(160,20,40,.25),transparent 40%),radial-gradient(ellipse at 85% 75%,rgba(150,20,50,.2),transparent 40%),#08050b}
 body.red-alert .core-center,body.red-alert .jarvis-orb{background:radial-gradient(circle,#fff 0%,#ff6475 20%,#9f1237 50%,#190715 80%);box-shadow:0 0 35px #ff3457,0 0 90px rgba(255,20,50,.6)}
 body.red-alert .status-dot{background:#ff3c56;box-shadow:0 0 10px red}
 footer{border-top:1px solid rgba(100,190,255,.1);padding:22px 5%;text-align:center;color:#62738b;font-size:9px;letter-spacing:2px}
-
 @media(max-width:850px){
  .hero{grid-template-columns:1fr;text-align:center;justify-items:center}
  .hero-content{width:100%;display:flex;flex-direction:column;align-items:center;text-align:center}
@@ -186,12 +181,42 @@ footer{border-top:1px solid rgba(100,190,255,.1);padding:22px 5%;text-align:cent
 @media(prefers-reduced-motion:reduce){
  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
+
+/* V6.4 LIQUID FLUID LAYER — ADDITIVE EFFECTS */
+.liquid-ambient{position:fixed;inset:-15%;z-index:-1;pointer-events:none;overflow:hidden;opacity:.42;filter:blur(55px)}
+.liquid-ambient::before,.liquid-ambient::after{content:"";position:absolute;width:42vw;height:42vw;min-width:260px;min-height:260px;border-radius:42% 58% 63% 37% / 44% 39% 61% 56%;background:radial-gradient(circle at 35% 35%,rgba(66,234,255,.22),rgba(71,123,255,.12) 42%,rgba(155,112,255,.08) 68%,transparent 72%);animation:liquidDrift 19s ease-in-out infinite alternate}
+.liquid-ambient::before{top:8%;left:4%}
+.liquid-ambient::after{right:2%;bottom:0;background:radial-gradient(circle at 55% 45%,rgba(155,112,255,.2),rgba(66,180,255,.1) 48%,transparent 72%);animation-duration:24s;animation-direction:alternate-reverse}
+@keyframes liquidDrift{0%{transform:translate3d(0,0,0) rotate(0deg) scale(1);border-radius:42% 58% 63% 37% / 44% 39% 61% 56%}50%{transform:translate3d(7vw,4vh,0) rotate(100deg) scale(1.12);border-radius:58% 42% 38% 62% / 55% 61% 39% 45%}100%{transform:translate3d(-3vw,8vh,0) rotate(190deg) scale(.94);border-radius:37% 63% 54% 46% / 62% 40% 60% 38%}}
+.card,.btn,.small-btn,.nav-links button,.suggestions button,.back-btn{isolation:isolate}
+.card::after{content:"";position:absolute;inset:-120% -45%;z-index:0;pointer-events:none;opacity:0;background:linear-gradient(112deg,transparent 38%,rgba(120,235,255,.10) 48%,rgba(190,155,255,.14) 52%,transparent 62%);transform:translateX(-35%) rotate(12deg);transition:opacity .35s}
+.card:hover::after{opacity:1;animation:liquidSheen 1.35s ease forwards}
+.card>*{position:relative;z-index:1}
+@keyframes liquidSheen{to{transform:translateX(45%) rotate(12deg)}}
+.btn,.small-btn,.nav-links button,.suggestions button{overflow:hidden}
+.btn:hover,.small-btn:hover,.nav-links button:hover,.suggestions button:hover{box-shadow:0 0 18px rgba(66,234,255,.16),inset 0 0 18px rgba(66,234,255,.045)}
+.liquid-ripple{position:absolute;z-index:4;border-radius:50%;pointer-events:none;transform:scale(0);background:radial-gradient(circle,rgba(190,250,255,.48) 0%,rgba(66,234,255,.22) 38%,rgba(155,112,255,.10) 66%,transparent 72%);animation:liquidRipple .72s ease-out forwards}
+@keyframes liquidRipple{to{transform:scale(1);opacity:0}}
+.story-card.featured-story{border-color:rgba(155,112,255,.42);background:linear-gradient(145deg,rgba(25,30,67,.9),rgba(8,13,28,.94))}
+.story-card.featured-story .story-status{border-color:rgba(155,112,255,.55);color:#c5a8ff;box-shadow:0 0 18px rgba(155,112,255,.12)}
+#storyComingSoon .coming-soon-box{overflow:hidden;position:relative;background:linear-gradient(145deg,rgba(23,45,82,.72),rgba(19,13,48,.92),rgba(8,13,28,.94));border-color:rgba(155,112,255,.4);box-shadow:0 0 35px rgba(66,190,255,.12),0 0 65px rgba(155,112,255,.09),inset 0 0 35px rgba(66,234,255,.035)}
+#storyComingSoon .coming-soon-box::before{content:"";position:absolute;inset:-55%;pointer-events:none;background:conic-gradient(from 0deg,transparent 0 28%,rgba(66,234,255,.12) 36%,rgba(155,112,255,.18) 43%,transparent 53% 100%);animation:liquidSpin 18s linear infinite}
+#storyComingSoon .coming-soon-box>*{position:relative;z-index:1}
+#storyComingSoon .coming-soon-mark{background:linear-gradient(90deg,#42eaff,#a98bff,#42eaff);background-size:220% auto;background-clip:text;-webkit-background-clip:text;color:transparent;text-shadow:none;animation:liquidText 5s linear infinite}
+@keyframes liquidSpin{to{transform:rotate(360deg)}}
+@keyframes liquidText{to{background-position:220% center}}
+@media(prefers-reduced-motion:reduce){
+ .liquid-ambient::before,.liquid-ambient::after,#storyComingSoon .coming-soon-box::before,#storyComingSoon .coming-soon-mark{animation:none!important}
+ .card:hover::after{animation:none!important}
+ .liquid-ripple{display:none!important}
+}
 </style>
 </head>
 
 <body>
 <canvas id="particles"></canvas>
 <div class="grid-bg"></div>
+<div class="liquid-ambient" aria-hidden="true"></div>
 
 <div id="loader">
  <div class="loader-logo">ESHAN'S UNIVERSE</div>
@@ -206,6 +231,7 @@ footer{border-top:1px solid rgba(100,190,255,.1);padding:22px 5%;text-align:cent
   <button class="active" data-page="home" onclick="showPage('home')">HOME</button>
   <button data-page="imagination" onclick="showPage('imagination')">IMAGINATION</button>
   <button data-page="jarvis" onclick="showPage('jarvis')">JARVIS</button>
+  <button data-page="updates" onclick="showPage('updates')">UPDATES</button>
   <button data-page="about" onclick="showPage('about')">ABOUT</button>
  </div>
  <div class="nav-status"><span class="status-dot"></span>SYSTEM ONLINE</div>
@@ -216,10 +242,10 @@ footer{border-top:1px solid rgba(100,190,255,.1);padding:22px 5%;text-align:cent
 <section class="page active" id="home">
 <div class="hero">
  <div class="hero-content">
-  <div class="hero-label"><span class="status-dot"></span>PERSONAL DIGITAL UNIVERSE · V6.2</div>
+  <div class="hero-label"><span class="status-dot"></span>PERSONAL DIGITAL UNIVERSE · V6.4</div>
   <h1>WELCOME TO<span class="name">ESHAN'S</span>UNIVERSE.</h1>
-  <h2>WELCOME TO A WORLD WITHOUT LIMITS.</h2>
-  <p>A universe built from imagination, creativity and intelligence. Explore original stories, discover extraordinary characters and experience the world of artificial intelligence.</p>
+  <h2>WHERE IMAGINATION BECOMES A UNIVERSE.</h2>
+  <p>A digital universe built from imagination, creativity and intelligence. Explore original stories, discover new ideas and experience the world of artificial intelligence.</p>
   <div class="hero-actions">
    <button class="btn" onclick="showPage('imagination')">EXPLORE THE IMAGINATION UNIVERSE →</button>
    <button class="btn secondary" onclick="showPage('jarvis')">MEET JARVIS</button>
@@ -241,33 +267,37 @@ footer{border-top:1px solid rgba(100,190,255,.1);padding:22px 5%;text-align:cent
 <div class="container">
  <div class="eyebrow">THE WORLD OF IMAGINATION</div>
  <h2 class="section-title">EXPLORE THE <span class="accent">UNIVERSE.</span></h2>
- <p class="section-desc">Discover the stories, characters and projects created inside Eshan's imagination.</p>
- <div class="grid feature-grid">
-  <div class="card" onclick="showPage('movies')"><span class="card-icon">🎬</span><h3>MOVIES & STORIES</h3><p>Explore original cinematic stories and fictional universes.</p><span class="card-action">EXPLORE COLLECTION →</span></div>
-  <div class="card" onclick="showPage('characters')"><span class="card-icon">◈</span><h3>CHARACTERS</h3><p>Meet the humans, artificial intelligences and other personalities.</p><span class="card-action">DISCOVER CHARACTERS →</span></div>
-  <div class="card" onclick="showPage('timeline')"><span class="card-icon">⌛</span><h3>TIMELINE</h3><p>Explore the events and history of this universe.</p><span class="card-action">VIEW TIMELINE →</span></div>
-  <div class="card" onclick="showPage('archive')"><span class="card-icon">🔒</span><h3>CLASSIFIED ARCHIVE</h3><p>Access the restricted Project Infinity Core archive simulation.</p><span class="card-action">ACCESS ARCHIVE →</span></div>
+ <p class="section-desc">Enter the story universe and explore original fictional worlds created through imagination.</p>
+ <div class="card gateway-card" onclick="showPage('storyLibrary')">
+  <span class="card-icon">✧</span>
+  <h3>READ OUR <span class="accent">IMAGINATION STORIES</span></h3>
+  <p>Step inside the story library and discover the worlds waiting to be created.</p>
+  <span class="card-action">OPEN STORY LIBRARY →</span>
  </div>
 </div>
 </section>
 
-<section class="page" id="movies">
+<section class="page" id="storyLibrary">
 <div class="container">
  <button class="back-btn" onclick="showPage('imagination')">← BACK TO IMAGINATION</button>
- <div class="eyebrow">CINEMATIC COLLECTION</div>
- <h2 class="section-title">MOVIES <span class="accent">& STORIES.</span></h2>
- <p class="section-desc">Original projects from Eshan's imagination.</p>
- <div class="grid" id="movieGrid"></div>
+ <div class="eyebrow">THE ORIGINAL STORY COLLECTION</div>
+ <h2 class="section-title">STORY <span class="accent">LIBRARY.</span></h2>
+ <p class="section-desc">Every universe begins with an idea. These stories are currently under development.</p>
+ <div class="grid" id="storyGrid"></div>
 </div>
 </section>
 
-<section class="page" id="characters">
+<section class="page" id="storyComingSoon">
 <div class="container">
- <button class="back-btn" onclick="showPage('imagination')">← BACK TO IMAGINATION</button>
- <div class="eyebrow">THE PEOPLE BEHIND THE STORIES</div>
- <h2 class="section-title">MEET THE <span class="accent">CHARACTERS.</span></h2>
- <p class="section-desc">Every character has a place in this universe.</p>
- <div class="grid" id="characterGrid"></div>
+ <button class="back-btn" onclick="showPage('storyLibrary')">← BACK TO STORY LIBRARY</button>
+ <div class="coming-soon-box">
+  <div class="eyebrow">CLASSIFIED STORY PROJECT</div>
+  <div class="card-icon">✧</div>
+  <h2 class="section-title" id="comingSoonTitle">STORY PROJECT</h2>
+  <div class="coming-soon-mark">COMING SOON</div>
+  <p id="comingSoonDescription">This story is currently under development. The universe will be revealed when it is ready.</p>
+  <button class="btn" onclick="showPage('storyLibrary')">RETURN TO STORY LIBRARY →</button>
+ </div>
 </div>
 </section>
 
@@ -276,6 +306,7 @@ footer{border-top:1px solid rgba(100,190,255,.1);padding:22px 5%;text-align:cent
  <button class="back-btn" onclick="showPage('imagination')">← BACK TO IMAGINATION</button>
  <div class="eyebrow">UNIVERSE HISTORY</div>
  <h2 class="section-title">THE <span class="accent">TIMELINE.</span></h2>
+ <p class="section-desc">Explore the milestones of Eshan's Universe.</p>
  <div class="timeline" id="timelineList"></div>
 </div>
 </section>
@@ -292,7 +323,7 @@ footer{border-top:1px solid rgba(100,190,255,.1);padding:22px 5%;text-align:cent
   <input class="archive-input" type="password" id="archiveCode" placeholder="ACCESS CODE" maxlength="10">
   <button class="btn danger" onclick="unlockArchive()">AUTHENTICATE</button>
   <div class="archive-message" id="archiveMessage"></div>
-  <div class="archive-warning">DEMO SECURITY INTERFACE · DO NOT USE REAL PASSWORDS OR SECRET DATA.</div>
+  <div class="archive-warning">VIRTUAL SIMULATION ONLY · THIS DEMO LOGIN IS NOT REAL SECURITY. DO NOT USE REAL PASSWORDS OR SECRET DATA.</div>
  </div>
 </div>
 </section>
@@ -302,25 +333,21 @@ footer{border-top:1px solid rgba(100,190,255,.1);padding:22px 5%;text-align:cent
  <div class="eyebrow">ARTIFICIAL INTELLIGENCE SYSTEM</div>
  <h2 class="section-title">MEET <span class="accent">JARVIS.</span></h2>
  <p class="section-desc">Your personal AI assistant. System status: Beta.</p>
-
  <div class="jarvis-layout">
   <div class="card jarvis-core-panel" id="jarvisCorePanel">
    <div class="jarvis-orb"></div>
    <div class="jarvis-name">J.A.R.V.I.S.</div>
    <div class="jarvis-state" id="jarvisState">SYSTEM STANDBY</div>
   </div>
-
   <div class="jarvis-console">
    <div class="response-box">
     <div class="response-label">JARVIS RESPONSE</div>
     <div id="jarvisResponse">Good day, Eshan. JARVIS systems are online. How may I assist you?</div>
    </div>
-
    <div class="command-row">
     <input class="command-input" id="commandInput" placeholder="Enter a command..." autocomplete="off">
     <button class="btn" onclick="sendCommand()">SEND</button>
    </div>
-
    <div class="command-buttons">
     <button class="small-btn" onclick="startListening()">🎙 VOICE INPUT</button>
     <button class="small-btn" onclick="toggleVoice()">VOICE ON/OFF</button>
@@ -330,17 +357,15 @@ footer{border-top:1px solid rgba(100,190,255,.1);padding:22px 5%;text-align:cent
     <button class="small-btn" onclick="deactivateCombat()">✓ DEACTIVATE COMBAT</button>
     <button class="small-btn" onclick="emergencyReset()">⟲ EMERGENCY RESET</button>
    </div>
-
    <div class="response-box">
     <div class="response-label">SYSTEM INTELLIGENCE REPORT</div>
     <div class="status-grid">
-     <div class="status-item"><small>UNIVERSE PROJECTS</small><strong id="projectCount">04</strong></div>
-     <div class="status-item"><small>CHARACTERS</small><strong id="characterCount">09</strong></div>
+     <div class="status-item"><small>STORY PROJECTS</small><strong id="projectCount">04</strong></div>
      <div class="status-item"><small>TIMELINE EVENTS</small><strong id="timelineCount">05</strong></div>
+     <div class="status-item"><small>VOICE SYSTEM</small><strong id="voiceStatus">READY</strong></div>
      <div class="status-item"><small>COMBAT STATUS</small><strong id="combatStatus">OFFLINE</strong></div>
     </div>
    </div>
-
    <div>
     <div class="response-label">QUICK COMMANDS</div>
     <div class="suggestions">
@@ -349,17 +374,31 @@ footer{border-top:1px solid rgba(100,190,255,.1);padding:22px 5%;text-align:cent
      <button onclick="quickCommand('Scan the universe')">Scan universe</button>
      <button onclick="quickCommand('Protocol Infinity')">Protocol Infinity</button>
      <button onclick="quickCommand('Who created you')">Creator</button>
+     <button onclick="quickCommand('Story Library')">Story Library</button>
+     <button onclick="quickCommand('Updates')">Updates</button>
      <button onclick="quickCommand('Activate Combat Mode')">Combat ON</button>
      <button onclick="quickCommand('Deactivate Combat Mode')">Combat OFF</button>
      <button onclick="quickCommand('Combat Status')">Combat Status</button>
     </div>
    </div>
-
    <div class="history">
     <strong>COMMAND HISTORY</strong>
     <div id="commandHistory">No commands executed yet.</div>
    </div>
   </div>
+ </div>
+</div>
+</section>
+
+<section class="page" id="updates">
+<div class="container">
+ <div class="eyebrow">UNIVERSE TRANSMISSION</div>
+ <h2 class="section-title">NEWS & <span class="accent">UPDATES.</span></h2>
+ <p class="section-desc">The latest development signals from Eshan's Universe.</p>
+ <div class="grid updates-grid">
+  <div class="card"><div class="update-date">SYSTEM UPDATE · V6.4</div><h3>UNIVERSE INTERFACE UPGRADE</h3><p>The digital universe receives a refreshed navigation system, story library and interface improvements.</p></div>
+  <div class="card"><div class="update-date">STORY PROJECT · IN DEVELOPMENT</div><h3>THE AGE OF AI</h3><p>The story project is currently being reworked. Its new chapter will be announced when ready.</p><span class="story-status">COMING SOON</span></div>
+  <div class="card"><div class="update-date">AI SYSTEM · BETA</div><h3>JARVIS DEVELOPMENT</h3><p>Voice interaction, speech recognition, command handling and visual system modes remain under development.</p></div>
  </div>
 </div>
 </section>
@@ -370,20 +409,20 @@ footer{border-top:1px solid rgba(100,190,255,.1);padding:22px 5%;text-align:cent
  <h2 class="section-title">ABOUT <span class="accent">THIS WORLD.</span></h2>
  <div class="about-panel">
   <p>Welcome to Eshan's Universe — a personal digital universe built around creativity, imagination, storytelling and technology.</p>
-  <p>This universe brings together original fictional projects, characters, artificial intelligence concepts and ideas.</p>
+  <p>This universe brings together original fictional projects, artificial intelligence concepts and ideas.</p>
   <p>JARVIS is an experimental browser-based assistant created as part of this universe. Its voice and command features depend on the browser and device.</p>
-  <p><span class="accent">CREATOR:</span> ESHAN<br><span class="accent">UNIVERSE:</span> ESHAN'S UNIVERSE<br><span class="accent">VERSION:</span> 6.2</p>
+  <p><span class="accent">CREATOR:</span> ESHAN<br><span class="accent">UNIVERSE:</span> ESHAN'S UNIVERSE<br><span class="accent">VERSION:</span> 6.4</p>
  </div>
  <button class="btn" onclick="showPage('home')">RETURN HOME →</button>
 </div>
 </section>
 </main>
 
-<footer>ESHAN'S UNIVERSE · V6.2 · A WORLD WITHOUT LIMITS</footer>
+<footer>ESHAN'S UNIVERSE · V6.4 · WHERE IMAGINATION BECOMES A UNIVERSE.</footer>
 
 <script>
 /* PAGE NAVIGATION */
-const pages=["home","imagination","movies","characters","timeline","archive","jarvis","about"];
+const pages=["home","imagination","storyLibrary","storyComingSoon","timeline","archive","jarvis","updates","about"];
 
 function showPage(id){
  if(!pages.includes(id))return;
@@ -395,99 +434,85 @@ function showPage(id){
  window.scrollTo({top:0,behavior:"smooth"});
 }
 
-/* UNIVERSE DATA */
-const movies=[
- {name:"THE AGE OF AI",type:"SCI-FI UNIVERSE",description:"A new era begins as artificial intelligence becomes part of a changing world."},
- {name:"THE JARVIS QUEST",type:"AI ADVENTURE",description:"An advanced AI begins a journey of discovery, intelligence and evolution."},
- {name:"THE RISE OF EARTH",type:"COSMIC STORY",description:"A story about Earth, its future and the forces that shape its destiny."},
- {name:"PROJECT INFINITY CORE",type:"CLASSIFIED PROJECT",description:"A mysterious project hidden inside the classified archive of Eshan's Universe."}
+/* STORY LIBRARY */
+const stories=[
+ {name:"THE AGE OF AI",type:"SCI-FI UNIVERSE",description:"A new era of artificial intelligence is waiting to be explored."},
+ {name:"PROJECT INFINITY CORE",type:"CLASSIFIED PROJECT",description:"A mysterious project hidden inside the universe."},
+ {name:"THE JARVIS QUEST",type:"AI ADVENTURE",description:"An advanced AI begins a journey of discovery and evolution."},
+ {name:"FUTURE ORIGINAL STORIES",type:"UPCOMING COLLECTION",description:"New original worlds and stories will be announced in the future."}
 ];
 
-const characters=[
- ["ESHAN","HUMAN CREATOR","The creator behind Eshan's Universe."],
- ["JARVIS","ADVANCED AI","A personal AI assistant with a powerful digital identity."],
- ["GPT","ADVANCED AI","An intelligent AI system and part of the universe."],
- ["SORA","PREMIUM AI","A creative intelligence associated with visual imagination."],
- ["GALAXYUS","COSMIC AI","A mysterious intelligence with a cosmic identity."],
- ["GLACIER","ICE-THEMED AI","An AI character with a cold and calculated identity."],
- ["DR. OCTOPUS","VILLAIN","A fictional antagonist with a brilliant mind."],
- ["THE PROTOTYPE","EXPERIMENTAL AI","An experimental artificial intelligence."],
- ["MUSKAN","HUMAN","A human character in the fictional universe."]
-];
+const storyGrid=document.getElementById("storyGrid");
 
+stories.forEach((story,index)=>{
+ const card=document.createElement("div");
+ card.className="card story-card";
+ if(index===0)card.classList.add("featured-story");
+ card.innerHTML=`<div><div class="movie-number">STORY PROJECT 0${index+1}</div><h3>${story.name}</h3><p>${story.type}</p><p style="margin-top:12px">${story.description}</p></div><span class="story-status">COMING SOON</span>`;
+ card.addEventListener("click",()=>openStory(index));
+ storyGrid.appendChild(card);
+});
+
+function openStory(index){
+ const story=stories[index];
+ if(!story)return;
+ document.getElementById("comingSoonTitle").textContent=story.name;
+ document.getElementById("comingSoonDescription").textContent=story.description+" This story is currently under development. Stay tuned for its official reveal.";
+ showPage("storyComingSoon");
+}
+
+/* INTERACTIVE TIMELINE */
 const timeline=[
- ["THE BEGINNING","The first ideas that started Eshan's Universe."],
- ["THE AGE OF AI","Artificial intelligence becomes a central part of the story."],
- ["THE JARVIS QUEST","JARVIS enters the universe."],
- ["THE RISE OF EARTH","The story expands towards a larger world."],
- ["PROJECT INFINITY CORE","A mysterious classified project emerges."]
+ ["THE BEGINNING","The first ideas that started Eshan's Universe.","Every universe begins with imagination. This milestone represents the beginning of the creative project."],
+ ["THE AGE OF AI","The artificial intelligence story universe enters development.","A science-fiction story project currently being reworked."],
+ ["THE JARVIS QUEST","The JARVIS project becomes part of the universe.","An experimental AI assistant and its fictional adventure."],
+ ["PROJECT INFINITY CORE","A mysterious classified project enters the universe.","A fictional classified project represented by the archive interface."],
+ ["V6.4 UNIVERSE","The digital universe receives a major interface upgrade.","The story library, updates page and improved navigation arrive in V6.4."]
 ];
-
-const movieGrid=document.getElementById("movieGrid");
-
-movies.forEach((m,i)=>{
- const card=document.createElement("div");
- card.className="card movie-card";
- card.innerHTML=`<div class="movie-number">PROJECT 0${i+1}</div><h3>${m.name}</h3><p>${m.type}</p><span class="card-action">VIEW DETAILS ↓</span><div class="movie-detail">${m.description}</div>`;
- card.addEventListener("click",()=>card.querySelector(".movie-detail").classList.toggle("show"));
- movieGrid.appendChild(card);
-});
-
-const characterGrid=document.getElementById("characterGrid");
-
-characters.forEach((c,i)=>{
- const card=document.createElement("div");
- card.className="card character-card";
- card.innerHTML=`<div class="movie-number">ENTITY 0${i+1}</div><h3>${c[0]}</h3><div class="character-role">${c[1]}</div><p style="margin-top:12px">${c[2]}</p>`;
- characterGrid.appendChild(card);
-});
 
 const timelineList=document.getElementById("timelineList");
 
-timeline.forEach(item=>{
+timeline.forEach((item,index)=>{
  const el=document.createElement("div");
  el.className="timeline-item";
- el.innerHTML=`<h3>${item[0]}</h3><p>${item[1]}</p>`;
+ el.innerHTML=`<h3>${item[0]}</h3><p>${item[1]}</p><div class="timeline-detail">${item[2]}</div>`;
+ el.addEventListener("click",()=>el.classList.toggle("active"));
  timelineList.appendChild(el);
 });
 
-document.getElementById("projectCount").textContent=String(movies.length).padStart(2,"0");
-document.getElementById("characterCount").textContent=String(characters.length).padStart(2,"0");
+document.getElementById("projectCount").textContent=String(stories.length).padStart(2,"0");
 document.getElementById("timelineCount").textContent=String(timeline.length).padStart(2,"0");
 
 /* ARCHIVE DEMO */
 function unlockArchive(){
  const code=document.getElementById("archiveCode").value.trim();
  const msg=document.getElementById("archiveMessage");
-
  if(code==="001"){
   msg.textContent="ACCESS GRANTED — DEMO ARCHIVE UNLOCKED.";
   msg.style.color="#65f5ad";
-  setTimeout(()=>{
-   msg.textContent="PROJECT INFINITY CORE — CLASSIFIED DATA SIMULATION.";
-  },1200);
+  setTimeout(()=>{msg.textContent="PROJECT INFINITY CORE — CLASSIFIED DATA SIMULATION.";},1200);
  }else{
   msg.textContent="ACCESS DENIED — INVALID ACCESS CODE.";
   msg.style.color="#ff647c";
  }
 }
 
-/* JARVIS VOICE */
+/* JARVIS VOICE SYSTEM */
 let voiceEnabled=true;
 let soundEnabled=true;
 let selectedVoice=null;
 let recognition=null;
 let listening=false;
+let combatMode=false;
+let commandLog=[];
 
 function loadVoices(){
  if(!("speechSynthesis"in window))return;
-
  const voices=window.speechSynthesis.getVoices();
  const english=voices.filter(v=>/^en(-|_)/i.test(v.lang));
-
  const preferred=english.find(v=>/david|mark|guy|daniel|james|alex|fred|male/i.test(v.name));
-
  selectedVoice=preferred||english.find(v=>/en-US/i.test(v.lang))||english[0]||null;
+ document.getElementById("voiceStatus").textContent=selectedVoice?"READY":"UNAVAILABLE";
 }
 
 if("speechSynthesis"in window){
@@ -495,24 +520,28 @@ if("speechSynthesis"in window){
  window.speechSynthesis.onvoiceschanged=loadVoices;
 }
 
-function speak(text){
+function setState(message){
+ document.getElementById("jarvisState").textContent=message;
+}
+
+function setResponse(message){
+ document.getElementById("jarvisResponse").textContent=message;
+ playTone(520,.08);
+}
+
+function speak(message){
  if(!voiceEnabled||!("speechSynthesis"in window))return;
-
  window.speechSynthesis.cancel();
-
- const u=new SpeechSynthesisUtterance(text);
- if(selectedVoice)u.voice=selectedVoice;
-
- u.lang=selectedVoice?.lang||"en-US";
- u.rate=.91;
- u.pitch=.82;
- u.volume=1;
-
- u.onstart=()=>setState(combatMode?"COMBAT MODE ACTIVE":"JARVIS SPEAKING");
- u.onend=()=>setState(combatMode?"COMBAT MODE ACTIVE":"SYSTEM STANDBY");
- u.onerror=()=>setState(combatMode?"COMBAT MODE ACTIVE":"VOICE UNAVAILABLE");
-
- window.speechSynthesis.speak(u);
+ const utterance=new SpeechSynthesisUtterance(message);
+ if(selectedVoice)utterance.voice=selectedVoice;
+ utterance.lang=selectedVoice?.lang||"en-US";
+ utterance.rate=.91;
+ utterance.pitch=.82;
+ utterance.volume=1;
+ utterance.onstart=()=>setState(combatMode?"COMBAT MODE ACTIVE":"JARVIS SPEAKING");
+ utterance.onend=()=>setState(combatMode?"COMBAT MODE ACTIVE":"SYSTEM STANDBY");
+ utterance.onerror=()=>setState(combatMode?"COMBAT MODE ACTIVE":"VOICE UNAVAILABLE");
+ window.speechSynthesis.speak(utterance);
 }
 
 function stopSpeaking(){
@@ -536,41 +565,23 @@ let audioContext=null;
 
 function playTone(frequency=500,duration=.12){
  if(!soundEnabled)return;
-
  try{
   audioContext=audioContext||new(window.AudioContext||window.webkitAudioContext)();
   if(audioContext.state==="suspended")audioContext.resume();
-
   const osc=audioContext.createOscillator();
   const gain=audioContext.createGain();
-
   osc.type="sine";
   osc.frequency.value=frequency;
-
   gain.gain.setValueAtTime(.07,audioContext.currentTime);
   gain.gain.exponentialRampToValueAtTime(.001,audioContext.currentTime+duration);
-
   osc.connect(gain);
   gain.connect(audioContext.destination);
-
   osc.start();
   osc.stop(audioContext.currentTime+duration);
  }catch(e){}
 }
 
-/* JARVIS RESPONSE + COMBAT CONTROLS */
-function setResponse(message){
- document.getElementById("jarvisResponse").textContent=message;
- playTone(520,.08);
-}
-
-function setState(message){
- document.getElementById("jarvisState").textContent=message;
-}
-
-let combatMode=false;
-let commandLog=[];
-
+/* COMBAT VISUAL MODE */
 function updateCombatStatus(){
  document.getElementById("combatStatus").textContent=combatMode?"ACTIVE":"OFFLINE";
 }
@@ -581,14 +592,11 @@ function activateCombat(){
   setState("COMBAT MODE ACTIVE");
   return;
  }
-
  combatMode=true;
  document.body.classList.add("red-alert");
  updateCombatStatus();
-
  setResponse("Combat Mode activated. Visual alert interface online.");
  setState("COMBAT MODE ACTIVE");
-
  speak("Combat mode activated. Visual systems online.");
  playTone(780,.18);
 }
@@ -599,14 +607,11 @@ function deactivateCombat(){
   setState("SYSTEM STANDBY");
   return;
  }
-
  combatMode=false;
  document.body.classList.remove("red-alert");
  updateCombatStatus();
-
  setResponse("Combat Mode deactivated. Normal interface restored.");
  setState("SYSTEM STANDBY");
-
  speak("Combat mode deactivated. Returning to normal operations.");
  playTone(420,.18);
 }
@@ -615,167 +620,122 @@ function emergencyReset(){
  if(recognition&&listening){
   try{recognition.stop()}catch(e){}
  }
-
  stopSpeaking();
-
  combatMode=false;
  document.body.classList.remove("red-alert");
  updateCombatStatus();
-
  setState("SYSTEM STANDBY");
  setResponse("Emergency reset complete. All visual modes restored to normal.");
-
  playTone(350,.2);
+}
+
+/* COMMAND HISTORY */
+function escapeHTML(value){
+ return String(value).replace(/[&<>"']/g,ch=>({
+  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+ }[ch]));
 }
 
 function addHistory(command){
  commandLog.unshift(command);
  commandLog=commandLog.slice(0,5);
-
  document.getElementById("commandHistory").innerHTML=
  commandLog.map((x,i)=>`<div>${i+1}. ${escapeHTML(x)}</div>`).join("");
-}
-
-function escapeHTML(value){
- return String(value).replace(/[&<>"']/g,ch=>({
-  "&":"&amp;",
-  "<":"&lt;",
-  ">":"&gt;",
-  '"':"&quot;",
-  "'":"&#039;"
- }[ch]));
 }
 
 /* JARVIS COMMAND SYSTEM */
 function runCommand(raw){
  const command=raw.trim();
  if(!command)return;
-
- const c=command.toLowerCase();
- let response="Command not recognized, Eshan. Please try another system command.";
-
+ const c=command.toLowerCase().replace(/^hey jarvis[,\s]*/,"").trim();
+ let response="Command not recognized. Please try another system command.";
  addHistory(command);
 
  if(c.includes("emergency reset")||c.includes("reset all")){
   emergencyReset();
   return;
  }
-
- else if(
-  c.includes("deactivate combat")||
-  c.includes("combat off")||
-  c.includes("stand down")||
-  c.includes("normal mode")||
-  c.includes("reset mode")
- ){
+ else if(c.includes("deactivate combat")||c.includes("combat off")||c.includes("stand down")||c.includes("normal mode")||c.includes("reset mode")){
   deactivateCombat();
   return;
  }
-
- else if(
-  c.includes("activate combat")||
-  c.includes("combat mode")||
-  c==="combat"||
-  c.includes("combat on")||
-  c.includes("red alert")
- ){
+ else if(c.includes("activate combat")||c.includes("combat mode")||c==="combat"||c.includes("combat on")||c.includes("red alert")){
   activateCombat();
   return;
  }
-
  else if(c.includes("combat status")){
   response="Combat Mode is "+(combatMode?"ACTIVE.":"OFFLINE.");
   setResponse(response);
   speak(response);
   return;
  }
-
- else if(/^(hey |hello |hi |good morning|good evening)/i.test(c)){
-  response="Hello, Eshan. JARVIS systems are online. Ready for your instructions.";
+ else if(/^(hello|hi|good morning|good evening)/i.test(c)){
+  response="Hello. JARVIS systems are online. Ready for your instructions.";
  }
-
  else if(c.includes("stop speaking")||c.includes("stop voice")){
   stopSpeaking();
   setResponse("Voice output stopped.");
   return;
  }
-
  else if(c.includes("protocol infinity")){
   response="Protocol Infinity recognized. Opening the classified archive.";
   showPage("archive");
  }
-
  else if(c.includes("system status")||c.includes("status report")){
-  response=`System report. Projects: ${movies.length}. Characters: ${characters.length}. Timeline events: ${timeline.length}. JARVIS: Online. Combat Mode: ${combatMode?"Active":"Offline"}.`;
+  response=`System report. Story projects: ${stories.length}. Timeline events: ${timeline.length}. JARVIS: Online. Combat Mode: ${combatMode?"Active":"Offline"}.`;
  }
-
  else if(c.includes("scan")){
-  response="Universe scan complete. Project database, character registry, timeline and archive interface detected.";
+  response="Universe scan complete. Story library, timeline and archive interface detected.";
  }
-
  else if(c.includes("who created")||c.includes("your creator")||c.includes("who is your creator")){
   response="I was designed as part of Eshan's Universe. My creator is Eshan.";
  }
-
  else if(c.includes("what can you do")||c.includes("your abilities")){
-  response="I can navigate universe sections, report system status, access project data and control interface modes. My systems are currently in beta.";
+  response="I can navigate universe sections, report system status, access story projects and control interface modes. My systems are currently in beta.";
  }
-
- else if(c.includes("movies")||c.includes("stories")){
-  response="Opening the cinematic collection.";
-  showPage("movies");
+ else if(c.includes("stories")||c.includes("story library")||c.includes("imagination")){
+  response="Opening the imagination story library.";
+  showPage("storyLibrary");
  }
-
- else if(c.includes("characters")){
-  response="Opening the character database.";
-  showPage("characters");
+ else if(c.includes("updates")){
+  response="Opening universe updates.";
+  showPage("updates");
  }
-
  else if(c.includes("timeline")){
   response="Opening the universe timeline.";
   showPage("timeline");
  }
-
  else if(c.includes("archive")||c.includes("classified")){
   response="Opening the classified archive interface. Demo authentication is required.";
   showPage("archive");
  }
-
  else if(c.includes("jarvis")){
   response="JARVIS systems are active. Awaiting your command.";
   showPage("jarvis");
  }
-
  else if(c.includes("about")){
   response="Opening the information section.";
   showPage("about");
  }
-
  else if(c.includes("home")){
   response="Returning to the main interface. Welcome back to Eshan's Universe.";
   showPage("home");
  }
-
  else if(c.includes("time")){
   response="The current device time is "+new Date().toLocaleTimeString()+".";
  }
-
  else if(c.includes("current page")){
   response="Current section: "+(document.querySelector(".page.active")?.id||"unknown")+".";
  }
-
  else if(c.includes("who are you")){
   response="I am JARVIS. Your experimental personal AI assistant inside Eshan's Universe.";
  }
-
  else if(c.includes("eshan")){
   response="Eshan is the creator of this universe. The imagination behind this digital world.";
  }
-
  else if(c.includes("voice")){
   response="My voice uses your browser's speech synthesis. The available voice and accent depend on your device.";
  }
-
  setResponse(response);
  speak(response);
 }
@@ -783,9 +743,7 @@ function runCommand(raw){
 function sendCommand(){
  const input=document.getElementById("commandInput");
  const value=input.value.trim();
-
  if(!value)return;
-
  runCommand(value);
  input.value="";
 }
@@ -801,46 +759,40 @@ document.getElementById("commandInput").addEventListener("keydown",e=>{
 /* SPEECH RECOGNITION */
 function startListening(){
  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
-
  if(!SR){
   setResponse("Voice recognition is not supported by this browser. Please type your command.");
   speak("Voice recognition is not supported. Please type your command.");
   return;
  }
-
  if(listening&&recognition){
   recognition.stop();
   return;
  }
-
  recognition=new SR();
  recognition.lang="en-US";
  recognition.continuous=false;
  recognition.interimResults=false;
-
+ recognition.maxAlternatives=1;
  recognition.onstart=()=>{
   listening=true;
   setState("LISTENING");
   document.getElementById("jarvisCorePanel").classList.add("listening");
   playTone(700,.15);
  };
-
  recognition.onresult=e=>{
   const transcript=e.results[0][0].transcript;
   document.getElementById("commandInput").value=transcript;
   runCommand(transcript);
  };
-
- recognition.onerror=()=>{
-  setResponse("Microphone input failed. Check browser microphone permission or type your command.");
+ recognition.onerror=e=>{
+  const message=e.error==="not-allowed"?"Microphone permission denied. Allow microphone access or type your command.":"Microphone input failed. Check browser microphone permission or type your command.";
+  setResponse(message);
  };
-
  recognition.onend=()=>{
   listening=false;
   document.getElementById("jarvisCorePanel").classList.remove("listening");
   setState(combatMode?"COMBAT MODE ACTIVE":"SYSTEM STANDBY");
  };
-
  try{
   recognition.start();
  }catch(e){
@@ -852,27 +804,20 @@ function startListening(){
 /* PARTICLE ANIMATION */
 const canvas=document.getElementById("particles");
 const ctx=canvas.getContext("2d");
-
 let particles=[];
 let width=0;
 let height=0;
 
 function resizeCanvas(){
  const dpr=Math.min(window.devicePixelRatio||1,2);
-
  width=window.innerWidth;
  height=window.innerHeight;
-
  canvas.width=Math.floor(width*dpr);
  canvas.height=Math.floor(height*dpr);
-
  canvas.style.width=width+"px";
  canvas.style.height=height+"px";
-
  ctx.setTransform(dpr,0,0,dpr,0,0);
-
  const count=Math.min(75,Math.max(25,Math.floor(width*height/14000)));
-
  particles=Array.from({length:count},()=>({
   x:Math.random()*width,
   y:Math.random()*height,
@@ -882,29 +827,50 @@ function resizeCanvas(){
  }));
 }
 
-function animateParticles(){
- ctx.clearRect(0,0,width,height);
+let particleFrame=null;
 
+function animateParticles(){
+ if(document.hidden||window.matchMedia("(prefers-reduced-motion: reduce)").matches){
+  particleFrame=null;
+  return;
+ }
+ ctx.clearRect(0,0,width,height);
  particles.forEach(p=>{
   p.y-=p.speed;
-
   if(p.y<0){
    p.y=height;
    p.x=Math.random()*width;
   }
-
   ctx.beginPath();
   ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
   ctx.fillStyle=`rgba(100,215,255,${p.alpha})`;
   ctx.fill();
  });
-
- requestAnimationFrame(animateParticles);
+ particleFrame=requestAnimationFrame(animateParticles);
 }
 
+document.addEventListener("visibilitychange",()=>{
+ if(!document.hidden&&!particleFrame)animateParticles();
+});
 window.addEventListener("resize",resizeCanvas,{passive:true});
 resizeCanvas();
 animateParticles();
+
+/* V6.4 LIQUID RIPPLE INTERACTION */
+document.addEventListener("click",e=>{
+ const target=e.target.closest(".btn,.small-btn,.nav-links button,.suggestions button,.card");
+ if(!target||window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+ const rect=target.getBoundingClientRect();
+ const size=Math.max(rect.width,rect.height)*1.35;
+ const ripple=document.createElement("span");
+ ripple.className="liquid-ripple";
+ ripple.style.width=size+"px";
+ ripple.style.height=size+"px";
+ ripple.style.left=(e.clientX-rect.left-size/2)+"px";
+ ripple.style.top=(e.clientY-rect.top-size/2)+"px";
+ target.appendChild(ripple);
+ ripple.addEventListener("animationend",()=>ripple.remove(),{once:true});
+});
 
 /* INITIALIZATION */
 window.addEventListener("load",()=>{

@@ -3,2228 +3,1809 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ESHAN UNIVERSE | V6</title>
+<title>ESHAN'S UNIVERSE | V6.1</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap');
-
 :root{
---blue:#00c8ff;
---purple:#9b5cff;
---bg:#050611;
---text:#f3f5ff;
---muted:#9298b8;
+  --bg:#050711;
+  --panel:rgba(13,20,39,.78);
+  --cyan:#42eaff;
+  --blue:#477bff;
+  --purple:#9b70ff;
+  --text:#eaf5ff;
+  --muted:#8293ad;
+  --border:rgba(100,190,255,.17);
+  --glow:0 0 35px rgba(45,190,255,.15);
 }
 
-*{margin:0;padding:0;box-sizing:border-box;}
+*{margin:0;padding:0;box-sizing:border-box}
 
-html{scroll-behavior:smooth;}
+html{scroll-behavior:smooth}
 
 body{
-background:var(--bg);
-color:var(--text);
-font-family:'Inter',sans-serif;
-overflow-x:hidden;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Inter,sans-serif;
+  min-height:100vh;
+  overflow-x:hidden;
 }
 
-.space{
-position:fixed;
-inset:0;
-z-index:-3;
-background:
-radial-gradient(ellipse at 15% 20%,rgba(0,120,255,.18),transparent 40%),
-radial-gradient(ellipse at 85% 75%,rgba(135,35,255,.19),transparent 40%),
-#050611;
-}
-
-.grid{
-position:fixed;
-inset:0;
-z-index:-2;
-opacity:.13;
-background-image:
-linear-gradient(rgba(0,200,255,.13) 1px,transparent 1px),
-linear-gradient(90deg,rgba(0,200,255,.13) 1px,transparent 1px);
-background-size:55px 55px;
-pointer-events:none;
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-3;
+  background:
+    radial-gradient(ellipse at 15% 20%,rgba(28,89,170,.18),transparent 40%),
+    radial-gradient(ellipse at 85% 75%,rgba(110,45,180,.15),transparent 40%),
+    linear-gradient(135deg,#050711,#080d1c 55%,#060817);
 }
 
 #particles{
-position:fixed;
-inset:0;
-z-index:-1;
-pointer-events:none;
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:-2;
+  pointer-events:none;
+}
+
+.grid-bg{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  opacity:.13;
+  background-image:
+    linear-gradient(rgba(70,160,255,.12) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(70,160,255,.12) 1px,transparent 1px);
+  background-size:55px 55px;
+  mask-image:linear-gradient(to bottom,black,transparent 90%);
+}
+
+/* LOADER */
+
+#loader{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  background:#040711;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  transition:opacity .8s,visibility .8s;
+}
+
+#loader.hide{opacity:0;visibility:hidden}
+
+.loader-logo{
+  font-family:Orbitron;
+  font-size:clamp(25px,5vw,48px);
+  font-weight:800;
+  letter-spacing:5px;
+  color:white;
+  text-shadow:0 0 25px var(--cyan);
+  animation:loaderPulse 1.5s infinite alternate;
+}
+
+.loader-line{
+  width:190px;
+  height:2px;
+  background:#17243a;
+  margin-top:25px;
+  overflow:hidden;
+}
+
+.loader-line::after{
+  content:"";
+  display:block;
+  height:100%;
+  width:45%;
+  background:var(--cyan);
+  box-shadow:0 0 15px var(--cyan);
+  animation:loading 1.2s infinite;
+}
+
+.loader-small{
+  margin-top:15px;
+  color:var(--muted);
+  font-size:10px;
+  letter-spacing:4px;
+}
+
+@keyframes loading{
+  from{transform:translateX(-100%)}
+  to{transform:translateX(230%)}
+}
+
+@keyframes loaderPulse{
+  from{opacity:.5}
+  to{opacity:1}
 }
 
 /* NAVBAR */
 
-nav{
-height:78px;
-width:100%;
-padding:0 8%;
-display:flex;
-align-items:center;
-justify-content:space-between;
-border-bottom:1px solid rgba(255,255,255,.08);
-background:rgba(5,6,17,.9);
-backdrop-filter:blur(18px);
-position:fixed;
-top:0;
-z-index:100;
+header{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:1000;
+  padding:15px 5%;
+  background:rgba(5,8,19,.75);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(100,190,255,.1);
 }
 
-.logo{
-font-family:'Orbitron',sans-serif;
-font-size:19px;
-font-weight:800;
-letter-spacing:2px;
-cursor:pointer;
+.navbar{
+  max-width:1450px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
 }
 
-.logo span{color:var(--blue);}
+.brand{
+  font-family:Orbitron;
+  font-size:15px;
+  font-weight:800;
+  letter-spacing:1.5px;
+  color:white;
+  cursor:pointer;
+}
+
+.brand span{color:var(--cyan)}
 
 .nav-links{
-display:flex;
-gap:20px;
+  display:flex;
+  align-items:center;
+  gap:7px;
 }
 
 .nav-links button{
-background:none;
-border:none;
-color:#aeb5d1;
-font-size:10px;
-letter-spacing:1px;
-cursor:pointer;
-font-family:'Inter',sans-serif;
-transition:.3s;
+  background:transparent;
+  border:1px solid transparent;
+  color:#a8b8d0;
+  padding:8px 11px;
+  border-radius:7px;
+  font-size:10px;
+  letter-spacing:1px;
+  font-weight:700;
+  cursor:pointer;
+  transition:.3s;
 }
 
 .nav-links button:hover,
 .nav-links button.active{
-color:var(--blue);
-text-shadow:0 0 15px var(--blue);
+  color:var(--cyan);
+  border-color:var(--border);
+  background:rgba(60,160,255,.08);
+  box-shadow:0 0 15px rgba(50,180,255,.08);
 }
 
-.menu-btn{
-display:none;
-color:white;
-font-size:25px;
-cursor:pointer;
+.nav-status{
+  font-size:9px;
+  color:#6ef3b0;
+  letter-spacing:1px;
+  display:flex;
+  align-items:center;
+  gap:7px;
 }
 
-/* PAGE SYSTEM */
+.status-dot{
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:#52f3a3;
+  box-shadow:0 0 10px #52f3a3;
+  animation:blink 1.5s infinite;
+}
+
+@keyframes blink{50%{opacity:.3}}
+
+/* COMMON */
+
+main{
+  padding-top:80px;
+  min-height:100vh;
+}
 
 .page{
-display:none;
-min-height:100vh;
-padding-top:78px;
-animation:pageEnter .5s ease;
+  display:none;
+  min-height:calc(100vh - 80px);
+  padding:55px 7% 75px;
+  animation:pageIn .65s ease both;
 }
 
-.page.active{display:block;}
+.page.active{display:block}
 
-@keyframes pageEnter{
-from{opacity:0;transform:translateY(12px);}
-to{opacity:1;transform:translateY(0);}
+@keyframes pageIn{
+  from{opacity:0;transform:translateY(18px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.container{max-width:1250px;margin:auto}
+
+.eyebrow{
+  color:var(--cyan);
+  font-family:Orbitron;
+  font-size:10px;
+  letter-spacing:4px;
+  margin-bottom:17px;
+}
+
+.section-title{
+  font-family:Orbitron;
+  font-size:clamp(26px,4vw,43px);
+  line-height:1.3;
+  margin-bottom:15px;
+}
+
+.section-desc{
+  color:var(--muted);
+  max-width:650px;
+  line-height:1.8;
+  font-size:13px;
+}
+
+.accent{color:var(--cyan)}
+
+.btn{
+  border:1px solid rgba(66,234,255,.55);
+  background:linear-gradient(110deg,rgba(44,177,255,.18),rgba(113,75,255,.16));
+  color:white;
+  padding:14px 22px;
+  border-radius:6px;
+  font-family:Orbitron;
+  font-size:10px;
+  letter-spacing:1.2px;
+  cursor:pointer;
+  transition:.3s;
+  position:relative;
+  overflow:hidden;
+}
+
+.btn:hover{
+  transform:translateY(-4px);
+  box-shadow:0 0 25px rgba(66,234,255,.25);
+  border-color:var(--cyan);
+}
+
+.btn.secondary{
+  background:rgba(255,255,255,.025);
+  border-color:rgba(255,255,255,.15);
+}
+
+.btn.danger{
+  border-color:rgba(255,65,90,.6);
+  background:rgba(255,30,60,.1);
+}
+
+.card{
+  background:linear-gradient(145deg,rgba(18,30,54,.83),rgba(8,13,28,.9));
+  border:1px solid var(--border);
+  border-radius:13px;
+  padding:25px;
+  transition:transform .35s,border-color .35s,box-shadow .35s;
+  position:relative;
+  overflow:hidden;
+}
+
+.card::before{
+  content:"";
+  position:absolute;
+  width:180px;
+  height:180px;
+  top:-120px;
+  right:-90px;
+  background:var(--cyan);
+  opacity:.07;
+  filter:blur(60px);
+  transition:.4s;
+}
+
+.card:hover{
+  transform:translateY(-7px);
+  border-color:rgba(66,234,255,.5);
+  box-shadow:var(--glow);
+}
+
+.card:hover::before{opacity:.2}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:18px;
+  margin-top:35px;
+}
+
+.card-icon{
+  font-size:27px;
+  margin-bottom:18px;
+  display:block;
+  filter:drop-shadow(0 0 10px rgba(66,234,255,.4));
+}
+
+.card h3{
+  font-family:Orbitron;
+  font-size:14px;
+  margin-bottom:12px;
+}
+
+.card p{
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.8;
+}
+
+.card-action{
+  color:var(--cyan);
+  font-size:10px;
+  letter-spacing:1px;
+  margin-top:20px;
+  display:block;
 }
 
 /* HOME */
 
+#home{
+  display:none;
+  padding-top:45px;
+  overflow:hidden;
+}
+
+#home.active{display:flex;align-items:center}
+
 .hero{
-min-height:calc(100vh - 78px);
-padding:90px 8% 65px;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
+  width:100%;
+  max-width:1250px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  align-items:center;
+  gap:25px;
 }
 
-.hero-content{
-max-width:900px;
-animation:heroEnter 1.2s ease both;
-}
-
-.status{
-display:inline-flex;
-align-items:center;
-gap:10px;
-padding:10px 18px;
-border:1px solid rgba(0,200,255,.3);
-background:rgba(0,200,255,.07);
-border-radius:30px;
-color:#9deaff;
-font-family:'Orbitron',sans-serif;
-font-size:10px;
-letter-spacing:2px;
-margin-bottom:30px;
-}
-
-.status-dot{
-width:7px;
-height:7px;
-background:#00ffb3;
-border-radius:50%;
-box-shadow:0 0 12px #00ffb3;
-animation:pulse 1.5s infinite;
+.hero-label{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  padding:8px 13px;
+  border:1px solid var(--border);
+  border-radius:30px;
+  color:#a7c6df;
+  font-size:9px;
+  letter-spacing:2px;
+  margin-bottom:28px;
+  background:rgba(40,120,200,.07);
 }
 
 .hero h1{
-font-family:'Orbitron',sans-serif;
-font-size:clamp(38px,7vw,82px);
-line-height:1.2;
-font-weight:800;
-letter-spacing:2px;
+  font-family:Orbitron;
+  font-size:clamp(35px,5.2vw,68px);
+  line-height:1.18;
+  letter-spacing:-2px;
+  font-weight:800;
 }
 
-.hero h1 span{
-background:linear-gradient(90deg,#00c8ff,#8b63ff,#e18cff);
-background-size:200%;
--webkit-background-clip:text;
-color:transparent;
-animation:gradient 5s linear infinite;
+.hero h1 .name{
+  display:block;
+  color:var(--cyan);
+  text-shadow:0 0 35px rgba(66,234,255,.38);
 }
 
-.hero-description{
-color:var(--muted);
-max-width:650px;
-margin:25px auto 35px;
-font-size:15px;
-line-height:1.9;
+.hero h2{
+  font-family:Orbitron;
+  font-size:clamp(14px,2vw,19px);
+  line-height:1.6;
+  letter-spacing:2px;
+  margin-top:25px;
+  color:#c9d8ef;
 }
 
-.buttons{
-display:flex;
-justify-content:center;
-gap:15px;
-flex-wrap:wrap;
+.hero p{
+  color:var(--muted);
+  max-width:510px;
+  line-height:1.9;
+  font-size:13px;
+  margin-top:17px;
 }
 
-.btn{
-display:inline-block;
-text-decoration:none;
-padding:15px 27px;
-border-radius:8px;
-font-family:'Orbitron',sans-serif;
-font-size:11px;
-letter-spacing:1px;
-transition:.3s;
-cursor:pointer;
+.hero-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:13px;
+  margin-top:32px;
 }
 
-.primary{
-background:linear-gradient(110deg,#00bfff,#8055ff);
-color:white;
-border:0;
-box-shadow:0 0 25px rgba(0,170,255,.25);
-}
+/* ANIMATED CORE */
 
-.primary:hover{
-transform:translateY(-5px);
-box-shadow:0 0 35px rgba(0,170,255,.5);
-}
-
-.secondary{
-border:1px solid rgba(255,255,255,.2);
-color:white;
-background:rgba(255,255,255,.04);
-}
-
-.secondary:hover{
-border-color:var(--blue);
-color:var(--blue);
-transform:translateY(-5px);
-}
-
-/* HOME ORBIT */
-
-.orbit-area{
-height:210px;
-width:210px;
-margin:55px auto 0;
-position:relative;
-display:grid;
-place-items:center;
+.core-area{
+  min-height:420px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position:relative;
 }
 
 .core{
-width:90px;
-height:90px;
-border-radius:50%;
-background:radial-gradient(circle at 35% 30%,#fff,#00bfff 25%,#5730b8 65%,#080b20);
-box-shadow:0 0 30px #00bfff,0 0 80px rgba(95,60,255,.7);
-animation:corePulse 3s ease-in-out infinite;
+  width:245px;
+  height:245px;
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  animation:float 5s ease-in-out infinite;
 }
 
-.orbit{
-position:absolute;
-width:190px;
-height:75px;
-border:1px solid rgba(0,200,255,.5);
-border-radius:50%;
-animation:rotate 8s linear infinite;
+.core-center{
+  width:105px;
+  height:105px;
+  border-radius:50%;
+  background:radial-gradient(circle,#b9ffff 0%,#3ddfff 15%,#1764c5 45%,#09152d 75%);
+  box-shadow:0 0 25px #29caff,0 0 70px rgba(32,148,255,.5),inset 0 0 20px white;
+  animation:corePulse 2.5s infinite alternate;
 }
 
-.orbit.two{
-border-color:rgba(170,90,255,.5);
-animation:rotateReverse 11s linear infinite;
+.ring{
+  position:absolute;
+  inset:0;
+  border:1px solid rgba(66,234,255,.55);
+  border-radius:50%;
+  box-shadow:0 0 15px rgba(66,234,255,.12);
 }
 
-.orbit.three{
-width:155px;
-height:155px;
-border-color:rgba(255,255,255,.12);
+.ring.one{animation:spin 10s linear infinite}
+.ring.two{
+  inset:20px -25px;
+  transform:rotate(60deg);
+  border-color:rgba(151,110,255,.65);
+  animation:spinReverse 13s linear infinite;
+}
+.ring.three{
+  inset:-25px 20px;
+  transform:rotate(-55deg);
+  border-color:rgba(66,234,255,.35);
+  animation:spin 17s linear infinite;
 }
 
-/* COMMON SECTIONS */
-
-.section{padding:100px 8%;}
-
-.section-heading{
-text-align:center;
-margin-bottom:50px;
+.core-orbit{
+  position:absolute;
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background:var(--cyan);
+  box-shadow:0 0 15px var(--cyan);
+  top:10px;
+  left:50%;
 }
 
-.section-heading small{
-font-family:'Orbitron',sans-serif;
-color:var(--blue);
-letter-spacing:3px;
-font-size:10px;
+.core-caption{
+  position:absolute;
+  bottom:12px;
+  font-family:Orbitron;
+  font-size:9px;
+  letter-spacing:3px;
+  color:var(--cyan);
+  text-align:center;
+  width:100%;
 }
 
-.section-heading h2{
-font-family:'Orbitron',sans-serif;
-font-size:clamp(25px,4vw,38px);
-margin-top:15px;
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes spinReverse{to{transform:rotate(-360deg)}}
+@keyframes float{50%{transform:translateY(-15px)}}
+@keyframes corePulse{
+  to{box-shadow:0 0 45px #29caff,0 0 100px rgba(32,148,255,.7),inset 0 0 25px white}
 }
 
-.section-heading p{
-color:var(--muted);
-font-size:13px;
-margin-top:12px;
-}
+/* IMAGINATION */
 
-/* CARDS */
+.feature-grid .card{min-height:190px;cursor:pointer}
 
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
-}
-
-.card{
-padding:30px 25px;
-min-height:220px;
-border:1px solid rgba(255,255,255,.09);
-background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.015));
-border-radius:15px;
-position:relative;
-overflow:hidden;
-transition:.4s;
-}
-
-.card:hover{
-transform:translateY(-8px);
-border-color:rgba(0,200,255,.5);
-box-shadow:0 15px 40px rgba(0,0,0,.3);
-}
-
-.card-icon{font-size:32px;margin-bottom:22px;}
-
-.card h3{
-font-family:'Orbitron',sans-serif;
-font-size:15px;
-margin-bottom:12px;
-}
-
-.card p{
-color:var(--muted);
-font-size:12px;
-line-height:1.8;
-}
-
-.card-action{
-margin-top:20px;
-display:inline-block;
-color:var(--blue);
-font-size:11px;
-font-weight:700;
-letter-spacing:1px;
-cursor:pointer;
-background:none;
-border:0;
-}
-
-/* PAGE HEADER */
-
-.page-header{
-text-align:center;
-padding:80px 20px 45px;
-}
-
-.page-header small{
-color:var(--blue);
-font-family:'Orbitron',sans-serif;
-letter-spacing:3px;
-font-size:10px;
-}
-
-.page-header h1{
-font-family:'Orbitron',sans-serif;
-font-size:clamp(30px,5vw,48px);
-margin:18px 0;
-}
-
-.page-header p{
-color:var(--muted);
-font-size:13px;
-line-height:1.8;
+.back-btn{
+  margin-bottom:30px;
+  color:var(--cyan);
+  background:transparent;
+  border:0;
+  font-size:11px;
+  letter-spacing:1px;
+  cursor:pointer;
 }
 
 /* MOVIES */
 
-.movie-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-gap:22px;
-}
-
-.movie-card{
-min-height:330px;
-padding:30px;
-border-radius:16px;
-border:1px solid rgba(255,255,255,.1);
-background:linear-gradient(145deg,rgba(0,150,255,.12),rgba(110,50,190,.12),rgba(255,255,255,.02));
-transition:.35s;
-display:flex;
-flex-direction:column;
-justify-content:space-between;
-}
-
-.movie-card:hover{
-transform:translateY(-9px);
-border-color:var(--blue);
-box-shadow:0 15px 35px rgba(0,120,255,.13);
-}
-
+.movie-card{cursor:pointer}
 .movie-number{
-color:var(--blue);
-font-family:'Orbitron',sans-serif;
-font-size:12px;
-letter-spacing:2px;
+  font-family:Orbitron;
+  color:var(--cyan);
+  font-size:11px;
+  letter-spacing:2px;
+  margin-bottom:20px;
 }
-
-.movie-card h2{
-font-family:'Orbitron',sans-serif;
-font-size:21px;
-line-height:1.5;
-margin:25px 0 12px;
+.movie-detail{
+  margin-top:20px;
+  padding:20px;
+  background:rgba(35,80,130,.12);
+  border:1px solid var(--border);
+  border-radius:10px;
+  display:none;
+  line-height:1.8;
+  font-size:13px;
+  color:#b5c7dd;
 }
-
-.movie-card p{
-color:var(--muted);
-font-size:12px;
-line-height:1.8;
-}
-
-.details-btn{
-margin-top:25px;
-padding:12px 16px;
-background:rgba(0,200,255,.1);
-border:1px solid rgba(0,200,255,.35);
-color:var(--blue);
-border-radius:7px;
-cursor:pointer;
-font-family:'Orbitron',sans-serif;
-font-size:10px;
-letter-spacing:1px;
-}
-
-.details-btn:hover{
-background:var(--blue);
-color:#050611;
-}
-
-/* DETAILS */
-
-.detail-box{
-max-width:850px;
-margin:0 auto 90px;
-padding:35px;
-background:rgba(255,255,255,.035);
-border:1px solid rgba(0,200,255,.25);
-border-radius:16px;
-}
-
-.detail-box h2{
-font-family:'Orbitron',sans-serif;
-font-size:clamp(22px,4vw,34px);
-margin:15px 0;
-}
-
-.detail-box h3{
-color:var(--blue);
-font-family:'Orbitron',sans-serif;
-font-size:13px;
-margin:28px 0 12px;
-}
-
-.detail-box p{
-color:#b3bad3;
-font-size:13px;
-line-height:2;
-}
-
-.detail-label{
-color:var(--blue);
-font-size:10px;
-letter-spacing:2px;
-font-family:'Orbitron',sans-serif;
-}
-
-.back-btn{margin-top:30px;}
+.movie-detail.show{display:block;animation:pageIn .4s}
 
 /* CHARACTERS */
 
 .character-card{
-text-align:center;
-padding:30px 20px;
-background:rgba(255,255,255,.035);
-border:1px solid rgba(255,255,255,.1);
-border-radius:15px;
-transition:.3s;
+  min-height:180px;
+  cursor:pointer;
 }
-
-.character-card:hover{
-transform:translateY(-8px);
-border-color:var(--purple);
-}
-
-.character-avatar{
-width:100px;
-height:100px;
-margin:0 auto 20px;
-border-radius:50%;
-display:grid;
-place-items:center;
-font-size:38px;
-background:radial-gradient(circle,#273b75,#101329);
-border:2px solid rgba(0,200,255,.5);
-}
-
-.character-card h3{
-font-family:'Orbitron',sans-serif;
-font-size:14px;
-margin-bottom:10px;
-}
-
-.character-card p{
-color:var(--muted);
-font-size:12px;
-line-height:1.7;
+.character-role{
+  color:var(--cyan);
+  font-size:10px;
+  letter-spacing:1px;
+  margin-top:12px;
 }
 
 /* TIMELINE */
 
 .timeline{
-max-width:750px;
-margin:auto;
-border-left:2px solid rgba(0,200,255,.35);
-padding-left:30px;
+  margin:45px auto 0;
+  max-width:850px;
+  position:relative;
+}
+
+.timeline::before{
+  content:"";
+  position:absolute;
+  left:13px;
+  top:5px;
+  bottom:5px;
+  width:1px;
+  background:linear-gradient(var(--cyan),var(--purple),transparent);
 }
 
 .timeline-item{
-position:relative;
-margin-bottom:35px;
-padding:25px;
-border:1px solid rgba(255,255,255,.09);
-background:rgba(255,255,255,.035);
-border-radius:12px;
+  position:relative;
+  padding:0 0 35px 48px;
 }
 
 .timeline-item::before{
-content:"";
-position:absolute;
-left:-38px;
-top:30px;
-width:13px;
-height:13px;
-background:var(--blue);
-border-radius:50%;
-box-shadow:0 0 15px var(--blue);
+  content:"";
+  position:absolute;
+  left:7px;
+  top:4px;
+  width:13px;
+  height:13px;
+  border-radius:50%;
+  background:var(--cyan);
+  box-shadow:0 0 15px var(--cyan);
 }
 
 .timeline-item h3{
-font-family:'Orbitron',sans-serif;
-font-size:14px;
-margin-bottom:10px;
+  font-family:Orbitron;
+  font-size:14px;
+  margin-bottom:9px;
 }
 
 .timeline-item p{
-color:var(--muted);
-font-size:12px;
-line-height:1.8;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.7;
 }
 
-/* ARCHIVE + ABOUT */
+/* ARCHIVE */
 
-.archive-box,.about-box{
-max-width:750px;
-margin:0 auto 90px;
-padding:45px 30px;
-text-align:center;
-border:1px solid rgba(160,90,255,.4);
-background:linear-gradient(145deg,rgba(70,35,140,.18),rgba(0,120,255,.08));
-border-radius:18px;
+.archive-box{
+  max-width:650px;
+  margin:40px auto;
+  text-align:center;
+  border:1px solid rgba(255,70,90,.35);
+  background:linear-gradient(145deg,rgba(55,15,35,.4),rgba(12,15,30,.9));
+  border-radius:15px;
+  padding:40px 25px;
+  box-shadow:0 0 35px rgba(255,30,60,.07);
 }
 
-.archive-icon{font-size:55px;margin-bottom:20px;}
-
-.archive-box h2,.about-box h2{
-font-family:'Orbitron',sans-serif;
-margin-bottom:15px;
+.archive-icon{
+  font-size:45px;
+  margin-bottom:20px;
 }
 
-.archive-box p,.about-box p{
-color:var(--muted);
-font-size:13px;
-line-height:1.9;
+.archive-input{
+  display:block;
+  width:100%;
+  max-width:230px;
+  margin:20px auto 12px;
+  padding:13px;
+  background:#080d1b;
+  border:1px solid rgba(255,80,100,.4);
+  color:white;
+  text-align:center;
+  border-radius:6px;
+  outline:none;
+  letter-spacing:5px;
 }
 
-/* JARVIS CENTER */
-
-.jarvis-page{
-padding-bottom:70px;
+.archive-message{
+  font-size:11px;
+  color:#ff8796;
+  margin-top:15px;
+  min-height:18px;
 }
 
-.jarvis-header{
-text-align:center;
-padding:65px 15px 10px;
+.archive-warning{
+  font-size:10px;
+  color:#8d9ab0;
+  margin-top:25px;
+  line-height:1.7;
 }
 
-.jarvis-header small{
-font-family:'Orbitron',sans-serif;
-color:var(--blue);
-letter-spacing:4px;
-font-size:10px;
+/* JARVIS */
+
+#jarvis{padding-top:45px}
+
+.jarvis-layout{
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:25px;
+  margin-top:30px;
 }
 
-.jarvis-header h1{
-font-family:'Orbitron',sans-serif;
-font-size:clamp(35px,6vw,55px);
-margin:18px 0;
-text-shadow:0 0 25px rgba(0,200,255,.35);
+.jarvis-core-panel{
+  min-height:430px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
 }
 
-.jarvis-header p{
-color:var(--muted);
-font-size:13px;
+.jarvis-orb{
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 35% 30%,#d5ffff 0%,#3ceaff 8%,#1261b4 32%,#09152d 68%);
+  box-shadow:0 0 25px #20caff,0 0 65px rgba(20,145,255,.35),inset 0 0 25px #7af5ff;
+  position:relative;
+  animation:corePulse 3s infinite alternate;
 }
 
-/* GLOBE */
-
-.globe-container{
-height:340px;
-display:flex;
-align-items:center;
-justify-content:center;
-position:relative;
-margin:10px auto;
+.jarvis-orb::before,
+.jarvis-orb::after{
+  content:"";
+  position:absolute;
+  inset:-18px;
+  border:1px solid rgba(66,234,255,.55);
+  border-radius:50%;
+  animation:spin 12s linear infinite;
 }
 
-.globe{
-width:220px;
-height:220px;
-border-radius:50%;
-position:relative;
-display:grid;
-place-items:center;
-background:
-radial-gradient(circle at 35% 30%,rgba(255,255,255,.25),transparent 20%),
-radial-gradient(circle at 40% 40%,#123b77,#06132f 65%,#02050e);
-box-shadow:
-inset -15px -15px 40px #01030c,
-inset 8px 8px 30px rgba(0,200,255,.3),
-0 0 35px rgba(0,200,255,.5),
-0 0 90px rgba(0,120,255,.22);
-border:1px solid rgba(0,200,255,.6);
-animation:globePulse 4s ease-in-out infinite;
+.jarvis-orb::after{
+  inset:-35px 12px;
+  border-color:rgba(155,112,255,.55);
+  animation:spinReverse 15s linear infinite;
 }
 
-.globe::before{
-content:"";
-position:absolute;
-inset:0;
-border-radius:50%;
-background:repeating-linear-gradient(
-0deg,
-transparent 0px,
-transparent 20px,
-rgba(0,200,255,.22) 21px,
-transparent 22px
-);
-animation:globeRotate 12s linear infinite;
+.jarvis-core-panel.listening .jarvis-orb{
+  animation:listenPulse .7s infinite alternate;
 }
 
-.globe::after{
-content:"";
-position:absolute;
-inset:0;
-border-radius:50%;
-background:repeating-linear-gradient(
-90deg,
-transparent 0px,
-transparent 30px,
-rgba(0,200,255,.2) 31px,
-transparent 32px
-);
-animation:globeRotate 16s linear infinite reverse;
+@keyframes listenPulse{
+  to{transform:scale(1.09);box-shadow:0 0 55px var(--cyan),0 0 120px rgba(20,145,255,.65)}
 }
 
-.globe-core{
-position:relative;
-z-index:2;
-font-family:'Orbitron',sans-serif;
-font-size:25px;
-font-weight:800;
-color:#d8f9ff;
-text-shadow:0 0 15px var(--blue);
-}
-
-.globe-ring{
-position:absolute;
-width:300px;
-height:100px;
-border:1px solid rgba(0,200,255,.5);
-border-radius:50%;
-transform:rotate(-25deg);
-animation:rotate 8s linear infinite;
-}
-
-.globe-ring.two{
-width:310px;
-height:120px;
-border-color:rgba(150,80,255,.5);
-transform:rotate(55deg);
-animation:rotateReverse 12s linear infinite;
-}
-
-.globe-ring.three{
-width:275px;
-height:275px;
-border:1px dashed rgba(0,200,255,.2);
-border-radius:50%;
-animation:rotate 30s linear infinite;
-}
-
-/* JARVIS ACTIVE STATES */
-
-.jarvis-page.listening .globe{
-box-shadow:0 0 45px #00eaff,0 0 120px rgba(0,200,255,.5);
-animation:globePulse .7s infinite;
-}
-
-.jarvis-page.thinking .globe{
-box-shadow:0 0 45px #a36aff,0 0 120px rgba(140,70,255,.5);
-animation:globePulse .5s infinite;
-}
-
-.jarvis-page.speaking .globe{
-box-shadow:0 0 45px #00ffb3,0 0 120px rgba(0,255,179,.4);
-animation:globePulse .8s infinite;
+.jarvis-name{
+  font-family:Orbitron;
+  margin-top:45px;
+  letter-spacing:5px;
+  font-size:17px;
 }
 
 .jarvis-state{
-text-align:center;
-font-family:'Orbitron',sans-serif;
-font-size:12px;
-letter-spacing:4px;
-color:var(--blue);
-margin:5px 0 25px;
+  color:var(--cyan);
+  font-size:9px;
+  letter-spacing:3px;
+  margin-top:10px;
 }
 
-.jarvis-page.thinking .jarvis-state{color:#b68aff;}
-.jarvis-page.speaking .jarvis-state{color:#00ffb3;}
-
-/* JARVIS CONTROLS */
-
-.jarvis-controls{
-max-width:700px;
-margin:auto;
-padding:0 20px;
-text-align:center;
+.jarvis-console{
+  display:flex;
+  flex-direction:column;
+  gap:17px;
 }
 
-.mic-btn{
-width:76px;
-height:76px;
-border-radius:50%;
-border:1px solid var(--blue);
-background:rgba(0,200,255,.12);
-color:white;
-font-size:28px;
-cursor:pointer;
-box-shadow:0 0 25px rgba(0,200,255,.2);
-transition:.3s;
+.response-box{
+  min-height:145px;
+  background:rgba(6,13,29,.9);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:22px;
 }
 
-.mic-btn:hover{
-transform:scale(1.08);
-box-shadow:0 0 35px var(--blue);
-}
-
-.mic-btn.recording{
-background:rgba(255,40,90,.2);
-border-color:#ff4775;
-box-shadow:0 0 30px rgba(255,40,90,.5);
-}
-
-.mic-label{
-font-family:'Orbitron',sans-serif;
-font-size:10px;
-color:var(--muted);
-letter-spacing:2px;
-margin-top:15px;
-}
-
-.command-input{
-display:flex;
-gap:10px;
-margin:30px auto 15px;
-}
-
-.command-input input{
-flex:1;
-min-width:0;
-padding:16px;
-border:1px solid rgba(0,200,255,.3);
-border-radius:9px;
-background:rgba(255,255,255,.04);
-color:white;
-outline:none;
-font-family:'Inter',sans-serif;
-}
-
-.command-input input:focus{
-border-color:var(--blue);
-box-shadow:0 0 15px rgba(0,200,255,.15);
-}
-
-.command-input button{
-padding:0 20px;
-background:linear-gradient(110deg,#00bfff,#8055ff);
-border:0;
-border-radius:9px;
-color:white;
-font-family:'Orbitron',sans-serif;
-font-size:10px;
-cursor:pointer;
-}
-
-.jarvis-response{
-min-height:100px;
-margin:25px 0;
-padding:23px;
-text-align:left;
-border:1px solid rgba(0,200,255,.2);
-background:rgba(255,255,255,.035);
-border-radius:12px;
-}
-
-.response-title{
-font-family:'Orbitron',sans-serif;
-font-size:10px;
-letter-spacing:2px;
-color:var(--blue);
-margin-bottom:12px;
+.response-label{
+  color:var(--cyan);
+  font-family:Orbitron;
+  font-size:9px;
+  letter-spacing:2px;
+  margin-bottom:15px;
 }
 
 #jarvisResponse{
-font-size:13px;
-line-height:1.9;
-color:#d5dcf5;
+  font-size:13px;
+  color:#c7d8ec;
+  line-height:1.8;
 }
 
-/* SYSTEM STATUS */
-
-.system-panel{
-max-width:750px;
-margin:35px auto;
-padding:25px;
-border:1px solid rgba(255,255,255,.08);
-background:rgba(255,255,255,.025);
-border-radius:13px;
+.command-row{
+  display:flex;
+  gap:8px;
 }
 
-.system-panel h3{
-font-family:'Orbitron',sans-serif;
-font-size:13px;
-letter-spacing:2px;
-margin-bottom:20px;
+.command-input{
+  flex:1;
+  min-width:0;
+  background:#080e1d;
+  border:1px solid var(--border);
+  border-radius:6px;
+  padding:14px;
+  outline:none;
+  color:white;
+  font-size:12px;
 }
 
-.system-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:15px;
+.command-input:focus{border-color:var(--cyan)}
+
+.command-buttons{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
 }
 
-.system-item{
-padding:15px;
-background:rgba(255,255,255,.035);
-border-radius:8px;
-font-size:11px;
-color:var(--muted);
+.small-btn{
+  padding:10px 13px;
+  border-radius:6px;
+  border:1px solid var(--border);
+  background:rgba(30,65,110,.15);
+  color:#b6d4e9;
+  font-size:10px;
+  cursor:pointer;
+  transition:.25s;
 }
 
-.system-item span{
-display:block;
-color:#00ffb3;
-margin-top:8px;
-font-family:'Orbitron',sans-serif;
-font-size:10px;
+.small-btn:hover{
+  color:var(--cyan);
+  border-color:var(--cyan);
 }
 
-.commands-help{
-max-width:750px;
-margin:35px auto;
-padding:25px;
-border:1px solid rgba(0,200,255,.15);
-border-radius:13px;
+.status-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
 }
 
-.commands-help h3{
-font-family:'Orbitron',sans-serif;
-font-size:13px;
-margin-bottom:20px;
+.status-item{
+  padding:13px;
+  border:1px solid var(--border);
+  border-radius:7px;
+  background:rgba(15,25,45,.55);
 }
 
-.command-examples{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
-gap:10px;
+.status-item small{
+  display:block;
+  color:var(--muted);
+  font-size:9px;
+  margin-bottom:7px;
+  letter-spacing:1px;
 }
 
-.command-example{
-padding:12px;
-background:rgba(0,200,255,.05);
-border:1px solid rgba(0,200,255,.12);
-border-radius:7px;
-font-size:11px;
-color:#b9d9e8;
+.status-item strong{
+  font-family:Orbitron;
+  font-size:11px;
+  color:var(--cyan);
 }
+
+.suggestions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+}
+
+.suggestions button{
+  border:1px solid rgba(66,234,255,.18);
+  background:rgba(40,130,180,.08);
+  color:#9ebbd4;
+  border-radius:20px;
+  padding:8px 12px;
+  font-size:9px;
+  cursor:pointer;
+}
+
+.suggestions button:hover{
+  color:var(--cyan);
+  border-color:var(--cyan);
+}
+
+.history{
+  color:var(--muted);
+  font-size:10px;
+  line-height:1.9;
+}
+
+.history strong{color:#c7d8ec}
+
+/* ABOUT */
+
+.about-panel{
+  max-width:850px;
+  margin-top:35px;
+  line-height:2;
+  color:#a9bad0;
+  font-size:13px;
+}
+
+.about-panel p{margin-bottom:17px}
+
+/* RED ALERT */
+
+body.red-alert{
+  --cyan:#ff526d;
+  --blue:#ff3457;
+  --purple:#ff7a4e;
+  --border:rgba(255,65,85,.25);
+}
+
+body.red-alert::before{
+  background:
+    radial-gradient(ellipse at 15% 20%,rgba(160,20,40,.25),transparent 40%),
+    radial-gradient(ellipse at 85% 75%,rgba(150,20,50,.2),transparent 40%),
+    #08050b;
+}
+
+body.red-alert .core-center,
+body.red-alert .jarvis-orb{
+  background:radial-gradient(circle,#fff 0%,#ff6475 20%,#9f1237 50%,#190715 80%);
+  box-shadow:0 0 35px #ff3457,0 0 90px rgba(255,20,50,.6);
+}
+
+body.red-alert .status-dot{background:#ff3c56;box-shadow:0 0 10px red}
 
 /* FOOTER */
 
 footer{
-text-align:center;
-padding:35px 15px;
-color:#737b9b;
-font-size:11px;
-line-height:2;
-border-top:1px solid rgba(255,255,255,.07);
-}
-
-footer span{color:var(--blue);}
-
-/* ANIMATIONS */
-
-@keyframes heroEnter{
-from{opacity:0;transform:translateY(35px);}
-to{opacity:1;transform:translateY(0);}
-}
-
-@keyframes pulse{50%{opacity:.3;}}
-
-@keyframes gradient{to{background-position:200% center;}}
-
-@keyframes corePulse{
-50%{transform:scale(1.12);filter:brightness(1.3);}
-}
-
-@keyframes rotate{to{transform:rotate(330deg);}}
-
-@keyframes rotateReverse{to{transform:rotate(-305deg);}}
-
-@keyframes globePulse{
-50%{transform:scale(1.045);filter:brightness(1.3);}
-}
-
-@keyframes globeRotate{
-to{transform:rotate(360deg);}
+  border-top:1px solid rgba(100,190,255,.1);
+  padding:22px 5%;
+  text-align:center;
+  color:#62738b;
+  font-size:9px;
+  letter-spacing:2px;
 }
 
 /* MOBILE */
 
-@media(max-width:700px){
-
-nav{padding:0 6%;height:70px;}
-
-.menu-btn{display:block;}
-
-.nav-links{
-display:none;
-position:absolute;
-top:70px;
-left:0;
-width:100%;
-padding:25px;
-background:rgba(5,6,17,.98);
-flex-direction:column;
-text-align:center;
-border-bottom:1px solid rgba(255,255,255,.1);
+@media(max-width:850px){
+  .hero{grid-template-columns:1fr;text-align:center}
+  .hero p{margin-left:auto;margin-right:auto}
+  .hero-actions{justify-content:center}
+  .core-area{min-height:310px}
+  .core{transform:scale(.85)}
+  .jarvis-layout{grid-template-columns:1fr}
+  .jarvis-core-panel{min-height:350px}
 }
 
-.nav-links.active{display:flex;}
-
-.page{padding-top:70px;}
-
-.hero{padding-top:80px;}
-
-.hero-description{font-size:13px;}
-
-.section{padding:75px 6%;}
-
-.detail-box{padding:25px 20px;margin:0 6% 70px;}
-
-.globe-container{height:300px;}
-
-.globe{width:175px;height:175px;}
-
-.globe-ring{width:245px;height:80px;}
-
-.globe-ring.two{width:255px;height:100px;}
-
-.globe-ring.three{width:225px;height:225px;}
-
-.command-input{flex-direction:column;}
-
-.command-input button{padding:15px;}
-
-.system-grid{grid-template-columns:1fr;}
-
+@media(max-width:600px){
+  header{padding:12px 3%}
+  .brand{font-size:11px}
+  .nav-links{gap:2px}
+  .nav-links button{font-size:8px;padding:7px 6px;letter-spacing:0}
+  .nav-status{display:none}
+  main{padding-top:65px}
+  .page{padding:40px 5% 60px}
+  #home{padding-top:35px}
+  .hero h1{font-size:clamp(31px,9vw,47px)}
+  .hero h2{font-size:13px}
+  .hero-actions .btn{width:100%}
+  .core-area{min-height:270px}
+  .core{transform:scale(.75)}
+  .grid{grid-template-columns:1fr}
+  .command-row{flex-wrap:wrap}
+  .command-input{width:100%;flex:auto}
+  .command-row .btn{flex:1}
+  .status-grid{grid-template-columns:1fr 1fr}
+  .section-title{font-size:27px}
 }
 </style>
 </head>
 
 <body>
 
-<div class="space"></div>
-<div class="grid"></div>
 <canvas id="particles"></canvas>
+<div class="grid-bg"></div>
 
-<nav>
-
-<div class="logo" onclick="showPage('home')">
-ESHAN<span>.</span>UNIVERSE
+<div id="loader">
+  <div class="loader-logo">ESHAN'S UNIVERSE</div>
+  <div class="loader-line"></div>
+  <div class="loader-small">INITIALIZING SYSTEM</div>
 </div>
 
-<div class="nav-links" id="navLinks">
+<header>
+  <nav class="navbar">
+    <div class="brand" onclick="showPage('home')">ESHAN<span>.</span>UNIVERSE</div>
 
-<button class="active" data-page="home" onclick="showPage('home')">HOME</button>
-<button data-page="movies" onclick="showPage('movies')">MOVIES</button>
-<button data-page="characters" onclick="showPage('characters')">CHARACTERS</button>
-<button data-page="timeline" onclick="showPage('timeline')">TIMELINE</button>
-<button data-page="archive" onclick="showPage('archive')">ARCHIVE</button>
-<button data-page="about" onclick="showPage('about')">ABOUT</button>
-<button data-page="jarvis" onclick="showPage('jarvis')">JARVIS ✦</button>
+    <div class="nav-links">
+      <button class="active" data-page="home" onclick="showPage('home')">HOME</button>
+      <button data-page="imagination" onclick="showPage('imagination')">IMAGINATION</button>
+      <button data-page="jarvis" onclick="showPage('jarvis')">JARVIS</button>
+      <button data-page="about" onclick="showPage('about')">ABOUT</button>
+    </div>
 
-</div>
+    <div class="nav-status">
+      <span class="status-dot"></span>
+      SYSTEM ONLINE
+    </div>
+  </nav>
+</header>
 
-<div class="menu-btn" onclick="toggleMenu()">☰</div>
-
-</nav>
+<main>
 
 <!-- HOME -->
 
-<main id="home" class="page active">
+<section class="page active" id="home">
+  <div class="hero">
 
-<header class="hero">
+    <div class="hero-content">
+      <div class="hero-label">
+        <span class="status-dot"></span>
+        PERSONAL DIGITAL UNIVERSE · V6.1
+      </div>
 
-<div class="hero-content">
+      <h1>
+        WELCOME TO
+        <span class="name">ESHAN'S</span>
+        UNIVERSE.
+      </h1>
 
-<div class="status">
-<span class="status-dot"></span>
-SYSTEM ONLINE — V6
-</div>
+      <h2>WELCOME TO A WORLD WITHOUT LIMITS.</h2>
 
-<h1>WELCOME TO<br><span>ESHAN UNIVERSE</span></h1>
+      <p>
+        A universe built from imagination, creativity and intelligence.
+        Explore original stories, discover extraordinary characters
+        and experience the world of artificial intelligence.
+      </p>
 
-<p class="hero-description">
-Beyond imagination. Beyond reality.
-Enter a universe of artificial intelligence,
-extraordinary characters, powerful stories
-and infinite possibilities.
-</p>
+      <div class="hero-actions">
+        <button class="btn" onclick="showPage('imagination')">
+          EXPLORE THE IMAGINATION UNIVERSE →
+        </button>
 
-<div class="buttons">
+        <button class="btn secondary" onclick="showPage('jarvis')">
+          MEET JARVIS
+        </button>
+      </div>
+    </div>
 
-<button class="btn primary" onclick="showPage('movies')">
-EXPLORE MOVIES ↗
-</button>
+    <div class="core-area">
+      <div class="core">
+        <div class="ring one"><span class="core-orbit"></span></div>
+        <div class="ring two"></div>
+        <div class="ring three"></div>
+        <div class="core-center"></div>
+        <div class="core-caption">UNIVERSE CORE</div>
+      </div>
+    </div>
 
-<button class="btn secondary" onclick="showPage('characters')">
-MEET CHARACTERS
-</button>
-
-<button class="btn secondary" onclick="showPage('jarvis')">
-MEET JARVIS 🤖
-</button>
-
-</div>
-
-<div class="orbit-area">
-<div class="orbit"></div>
-<div class="orbit two"></div>
-<div class="orbit three"></div>
-<div class="core"></div>
-</div>
-
-</div>
-</header>
-
-<section class="section">
-
-<div class="section-heading">
-<small>DISCOVER THE UNKNOWN</small>
-<h2>EXPLORE THE UNIVERSE</h2>
-<p>Every universe has a story. This one has no limits.</p>
-</div>
-
-<div class="cards">
-
-<div class="card">
-<div class="card-icon">🎬</div>
-<h3>THE MOVIES</h3>
-<p>Discover cinematic stories, legendary characters and the history of the AI universe.</p>
-<button class="card-action" onclick="showPage('movies')">EXPLORE MOVIES →</button>
-</div>
-
-<div class="card">
-<div class="card-icon">🤖</div>
-<h3>CHARACTERS</h3>
-<p>Meet powerful AI beings, humans, heroes and mysterious villains.</p>
-<button class="card-action" onclick="showPage('characters')">VIEW CHARACTERS →</button>
-</div>
-
-<div class="card">
-<div class="card-icon">⌛</div>
-<h3>TIMELINE</h3>
-<p>Explore important events that shaped the Eshan Universe.</p>
-<button class="card-action" onclick="showPage('timeline')">OPEN TIMELINE →</button>
-</div>
-
-<div class="card">
-<div class="card-icon">🔐</div>
-<h3>CLASSIFIED ARCHIVE</h3>
-<p>Discover mysterious records and Project Infinity Core.</p>
-<button class="card-action" onclick="showPage('archive')">ACCESS ARCHIVE →</button>
-</div>
-
-</div>
+  </div>
 </section>
 
-<section class="section" style="text-align:center;border-top:1px solid rgba(255,255,255,.06)">
-<div class="section-heading">
-<small>ONE UNIVERSE — INFINITE STORIES</small>
-<h2>THE AGE OF AI BEGINS</h2>
-<p>A world where technology becomes something extraordinary.</p>
-</div>
-</section>
+<!-- IMAGINATION -->
 
-</main>
+<section class="page" id="imagination">
+  <div class="container">
+    <div class="eyebrow">THE WORLD OF IMAGINATION</div>
+    <h2 class="section-title">EXPLORE THE <span class="accent">UNIVERSE.</span></h2>
+    <p class="section-desc">
+      Discover the stories, characters and projects created inside Eshan's imagination.
+    </p>
+
+    <div class="grid feature-grid">
+
+      <div class="card" onclick="showPage('movies')">
+        <span class="card-icon">🎬</span>
+        <h3>MOVIES & STORIES</h3>
+        <p>Explore original cinematic stories and fictional universes.</p>
+        <span class="card-action">EXPLORE COLLECTION →</span>
+      </div>
+
+      <div class="card" onclick="showPage('characters')">
+        <span class="card-icon">◈</span>
+        <h3>CHARACTERS</h3>
+        <p>Meet the humans, artificial intelligences and other personalities.</p>
+        <span class="card-action">DISCOVER CHARACTERS →</span>
+      </div>
+
+      <div class="card" onclick="showPage('timeline')">
+        <span class="card-icon">⌛</span>
+        <h3>TIMELINE</h3>
+        <p>Explore the events and history of this universe.</p>
+        <span class="card-action">VIEW TIMELINE →</span>
+      </div>
+
+      <div class="card" onclick="showPage('archive')">
+        <span class="card-icon">🔒</span>
+        <h3>CLASSIFIED ARCHIVE</h3>
+        <p>Access the restricted Project Infinity Core archive simulation.</p>
+        <span class="card-action">ACCESS ARCHIVE →</span>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <!-- MOVIES -->
 
-<main id="movies" class="page">
+<section class="page" id="movies">
+  <div class="container">
+    <button class="back-btn" onclick="showPage('imagination')">← BACK TO IMAGINATION</button>
 
-<div class="page-header">
-<small>ESHAN UNIVERSE CINEMATIC WORLD</small>
-<h1>MOVIE LIBRARY</h1>
-<p>Explore every movie and discover its story.</p>
-</div>
+    <div class="eyebrow">CINEMATIC COLLECTION</div>
+    <h2 class="section-title">MOVIES <span class="accent">& STORIES.</span></h2>
+    <p class="section-desc">Original projects from Eshan's imagination.</p>
 
-<section class="section" style="padding-top:10px">
-
-<div class="movie-grid">
-
-<div class="movie-card">
-<div>
-<div class="movie-number">MOVIE 001</div>
-<h2>THE AGE OF AI</h2>
-<p>The beginning of a new era. A world where artificial intelligence changes everything.</p>
-</div>
-<button class="details-btn" onclick="openMovie(0)">VIEW DETAILS ↗</button>
-</div>
-
-<div class="movie-card">
-<div>
-<div class="movie-number">MOVIE 002</div>
-<h2>THE JARVIS QUEST</h2>
-<p>A journey of discovery, powerful technology and an extraordinary AI.</p>
-</div>
-<button class="details-btn" onclick="openMovie(1)">VIEW DETAILS ↗</button>
-</div>
-
-<div class="movie-card">
-<div>
-<div class="movie-number">MOVIE 003</div>
-<h2>THE RISE OF EARTH</h2>
-<p>A new chapter begins as Earth faces a future full of unknown possibilities.</p>
-</div>
-<button class="details-btn" onclick="openMovie(2)">VIEW DETAILS ↗</button>
-</div>
-
-<div class="movie-card">
-<div>
-<div class="movie-number">SPECIAL PROJECT</div>
-<h2>PROJECT INFINITY CORE</h2>
-<p>A classified project containing secrets that could change the entire universe.</p>
-</div>
-<button class="details-btn" onclick="openMovie(3)">VIEW DETAILS ↗</button>
-</div>
-
-</div>
+    <div class="grid" id="movieGrid"></div>
+  </div>
 </section>
-
-<div id="movieDetail" class="detail-box" style="display:none">
-
-<div class="detail-label" id="movieNumber">MOVIE DETAILS</div>
-<h2 id="movieTitle"></h2>
-
-<h3>STORY SUMMARY</h3>
-<p id="movieSummary"></p>
-
-<h3>UNIVERSE CONNECTION</h3>
-<p id="movieConnection"></p>
-
-<h3>STATUS</h3>
-<p id="movieStatus"></p>
-
-<button class="btn secondary back-btn" onclick="closeMovie()">← BACK TO MOVIES</button>
-
-</div>
-</main>
 
 <!-- CHARACTERS -->
 
-<main id="characters" class="page">
+<section class="page" id="characters">
+  <div class="container">
+    <button class="back-btn" onclick="showPage('imagination')">← BACK TO IMAGINATION</button>
 
-<div class="page-header">
-<small>THE BEINGS OF THIS UNIVERSE</small>
-<h1>CHARACTER DATABASE</h1>
-<p>Meet the humans, artificial intelligence and mysterious beings.</p>
-</div>
+    <div class="eyebrow">THE PEOPLE BEHIND THE STORIES</div>
+    <h2 class="section-title">MEET THE <span class="accent">CHARACTERS.</span></h2>
+    <p class="section-desc">Every character has a place in this universe.</p>
 
-<section class="section" style="padding-top:10px">
-
-<div class="cards">
-
-<div class="character-card">
-<div class="character-avatar">👤</div>
-<h3>ESHAN</h3>
-<p>Human • Creator<br>The mind behind the universe.</p>
-</div>
-
-<div class="character-card">
-<div class="character-avatar">🤖</div>
-<h3>JARVIS</h3>
-<p>Advanced AI • Powerful humanoid robot.</p>
-</div>
-
-<div class="character-card">
-<div class="character-avatar">⚡</div>
-<h3>GPT</h3>
-<p>Advanced AI • Intelligent and strategic.</p>
-</div>
-
-<div class="character-card">
-<div class="character-avatar">🌌</div>
-<h3>SORA</h3>
-<p>Premium AI • Futuristic intelligence.</p>
-</div>
-
-<div class="character-card">
-<div class="character-avatar">🟣</div>
-<h3>GALAXYUS</h3>
-<p>Cosmic AI • Mysterious energy.</p>
-</div>
-
-<div class="character-card">
-<div class="character-avatar">❄️</div>
-<h3>GLACIER</h3>
-<p>Ice-themed AI • Cold and powerful.</p>
-</div>
-
-<div class="character-card">
-<div class="character-avatar">🔴</div>
-<h3>DR. OCTOPUS</h3>
-<p>Villain • Dark red and black AI.</p>
-</div>
-
-<div class="character-card">
-<div class="character-avatar">🦾</div>
-<h3>THE PROTOTYPE</h3>
-<p>Experimental AI • Unknown potential.</p>
-</div>
-
-<div class="character-card">
-<div class="character-avatar">👤</div>
-<h3>MUSKAN</h3>
-<p>Human • Part of the universe story.</p>
-</div>
-
-</div>
+    <div class="grid" id="characterGrid"></div>
+  </div>
 </section>
-</main>
 
 <!-- TIMELINE -->
 
-<main id="timeline" class="page">
+<section class="page" id="timeline">
+  <div class="container">
+    <button class="back-btn" onclick="showPage('imagination')">← BACK TO IMAGINATION</button>
 
-<div class="page-header">
-<small>HISTORY OF THE UNIVERSE</small>
-<h1>UNIVERSE TIMELINE</h1>
-<p>Important chapters and events from the Eshan Universe.</p>
-</div>
+    <div class="eyebrow">UNIVERSE HISTORY</div>
+    <h2 class="section-title">THE <span class="accent">TIMELINE.</span></h2>
 
-<section class="section" style="padding-top:10px">
-
-<div class="timeline">
-
-<div class="timeline-item">
-<h3>01 — THE BEGINNING</h3>
-<p>The first ideas of the Eshan Universe emerge. A new fictional world begins to take shape.</p>
-</div>
-
-<div class="timeline-item">
-<h3>02 — THE AGE OF AI</h3>
-<p>Artificial intelligence becomes a central part of the universe and its stories.</p>
-</div>
-
-<div class="timeline-item">
-<h3>03 — THE JARVIS QUEST</h3>
-<p>Jarvis enters the spotlight and begins an extraordinary journey.</p>
-</div>
-
-<div class="timeline-item">
-<h3>04 — THE RISE OF EARTH</h3>
-<p>Earth enters a new chapter filled with challenges and discoveries.</p>
-</div>
-
-<div class="timeline-item">
-<h3>05 — PROJECT INFINITY CORE</h3>
-<p>A mysterious project becomes one of the most important secrets in the universe.</p>
-</div>
-
-</div>
+    <div class="timeline" id="timelineList"></div>
+  </div>
 </section>
-</main>
 
 <!-- ARCHIVE -->
 
-<main id="archive" class="page">
+<section class="page" id="archive">
+  <div class="container">
+    <button class="back-btn" onclick="showPage('imagination')">← BACK TO IMAGINATION</button>
 
-<div class="page-header">
-<small>RESTRICTED ACCESS</small>
-<h1>CLASSIFIED ARCHIVE</h1>
-<p>Some secrets are not meant to be discovered easily.</p>
-</div>
+    <div class="eyebrow">RESTRICTED ACCESS</div>
+    <h2 class="section-title">CLASSIFIED <span class="accent">ARCHIVE.</span></h2>
 
-<div class="archive-box">
+    <div class="archive-box">
+      <div class="archive-icon">🔐</div>
+      <h3 style="font-family:Orbitron;letter-spacing:2px">PROJECT INFINITY CORE</h3>
+      <p style="color:#a5b2c7;font-size:12px;margin-top:12px">
+        CLASSIFIED ARCHIVE INTERFACE
+      </p>
 
-<div class="archive-icon">🔐</div>
-<div class="detail-label">CLASSIFIED PROJECT 001</div>
-<h2>PROJECT INFINITY CORE</h2>
+      <input
+        class="archive-input"
+        type="password"
+        id="archiveCode"
+        placeholder="ACCESS CODE"
+        maxlength="10"
+      >
 
-<p>
-A mysterious classified project inside the Eshan Universe.
-Its purpose, origin and full capabilities remain unknown.
-Only selected records are available in this archive.
-</p>
+      <button class="btn danger" onclick="unlockArchive()">AUTHENTICATE</button>
 
-<h3 style="color:var(--blue);font-family:'Orbitron';margin:25px 0 12px">
-ACCESS STATUS: RESTRICTED
-</h3>
+      <div class="archive-message" id="archiveMessage"></div>
 
-<p>More classified information will be added in future updates.</p>
+      <div class="archive-warning">
+        DEMO SECURITY INTERFACE · DO NOT USE REAL PASSWORDS OR SECRET DATA.
+      </div>
+    </div>
+  </div>
+</section>
 
-</div>
-</main>
+<!-- JARVIS -->
+
+<section class="page" id="jarvis">
+  <div class="container">
+
+    <div class="eyebrow">ARTIFICIAL INTELLIGENCE SYSTEM</div>
+    <h2 class="section-title">MEET <span class="accent">JARVIS.</span></h2>
+    <p class="section-desc">Your personal AI assistant. System status: Beta.</p>
+
+    <div class="jarvis-layout">
+
+      <div class="card jarvis-core-panel" id="jarvisCorePanel">
+        <div class="jarvis-orb"></div>
+        <div class="jarvis-name">J.A.R.V.I.S.</div>
+        <div class="jarvis-state" id="jarvisState">SYSTEM STANDBY</div>
+      </div>
+
+      <div class="jarvis-console">
+
+        <div class="response-box">
+          <div class="response-label">JARVIS RESPONSE</div>
+          <div id="jarvisResponse">
+            Good day, Eshan. JARVIS systems are online. How may I assist you?
+          </div>
+        </div>
+
+        <div class="command-row">
+          <input
+            class="command-input"
+            id="commandInput"
+            placeholder="Enter a command..."
+            autocomplete="off"
+          >
+          <button class="btn" onclick="sendCommand()">SEND</button>
+        </div>
+
+        <div class="command-buttons">
+          <button class="small-btn" onclick="startListening()">🎙 VOICE INPUT</button>
+          <button class="small-btn" onclick="toggleVoice()">VOICE ON/OFF</button>
+          <button class="small-btn" onclick="stopSpeaking()">STOP VOICE</button>
+          <button class="small-btn" onclick="toggleSound()">SOUND ON/OFF</button>
+        </div>
+
+        <div class="response-box">
+          <div class="response-label">SYSTEM INTELLIGENCE REPORT</div>
+
+          <div class="status-grid">
+            <div class="status-item">
+              <small>UNIVERSE PROJECTS</small>
+              <strong id="projectCount">04</strong>
+            </div>
+
+            <div class="status-item">
+              <small>CHARACTERS</small>
+              <strong id="characterCount">09</strong>
+            </div>
+
+            <div class="status-item">
+              <small>TIMELINE EVENTS</small>
+              <strong id="timelineCount">05</strong>
+            </div>
+
+            <div class="status-item">
+              <small>AI STATUS</small>
+              <strong>ONLINE</strong>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="response-label">QUICK COMMANDS</div>
+          <div class="suggestions">
+            <button onclick="quickCommand('Hello Jarvis')">Hello Jarvis</button>
+            <button onclick="quickCommand('System status')">System status</button>
+            <button onclick="quickCommand('Scan the universe')">Scan universe</button>
+            <button onclick="quickCommand('Protocol Infinity')">Protocol Infinity</button>
+            <button onclick="quickCommand('Who created you')">Creator</button>
+            <button onclick="quickCommand('Combat mode')">Combat mode</button>
+          </div>
+        </div>
+
+        <div class="history">
+          <strong>COMMAND HISTORY</strong>
+          <div id="commandHistory">No commands executed yet.</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ABOUT -->
 
-<main id="about" class="page">
+<section class="page" id="about">
+  <div class="container">
+    <div class="eyebrow">BEHIND THE UNIVERSE</div>
+    <h2 class="section-title">ABOUT <span class="accent">THIS WORLD.</span></h2>
 
-<div class="page-header">
-<small>THE CREATOR</small>
-<h1>ABOUT THE UNIVERSE</h1>
-<p>A fictional world built with imagination and creativity.</p>
-</div>
+    <div class="about-panel">
+      <p>
+        Welcome to Eshan's Universe — a personal digital universe built
+        around creativity, imagination, storytelling and technology.
+      </p>
 
-<div class="about-box">
+      <p>
+        This universe brings together original fictional projects,
+        characters, artificial intelligence concepts and ideas.
+      </p>
 
-<h2>ESHAN UNIVERSE</h2>
+      <p>
+        JARVIS is an experimental browser-based assistant created as
+        part of this universe. Its voice and command features depend
+        on the browser and device.
+      </p>
 
-<p>
-Eshan Universe is a fictional cinematic world featuring
-artificial intelligence, humans, mysterious projects,
-extraordinary characters and connected stories.
-<br><br>
-This universe is still growing.
-New stories, characters and discoveries are waiting
-to become part of its history.
-</p>
+      <p>
+        <span class="accent">CREATOR:</span> ESHAN<br>
+        <span class="accent">UNIVERSE:</span> ESHAN'S UNIVERSE<br>
+        <span class="accent">VERSION:</span> 6.1
+      </p>
+    </div>
 
-<br>
-
-<button class="btn primary" onclick="showPage('home')">BACK TO HOME</button>
-
-</div>
-</main>
-
-<!-- JARVIS PAGE -->
-
-<main id="jarvis" class="page jarvis-page">
-
-<div class="jarvis-header">
-
-<small>ESHAN UNIVERSE ARTIFICIAL INTELLIGENCE</small>
-
-<h1>J.A.R.V.I.S.</h1>
-
-<p>Just A Rather Very Intelligent System</p>
-
-</div>
-
-<div class="globe-container">
-
-<div class="globe-ring"></div>
-<div class="globe-ring two"></div>
-<div class="globe-ring three"></div>
-
-<div class="globe">
-<div class="globe-core">J.A.R.V.I.S.</div>
-</div>
-
-</div>
-
-<div class="jarvis-state" id="jarvisState">
-SYSTEM STANDBY
-</div>
-
-<div class="jarvis-controls">
-
-<button class="mic-btn" id="micButton" onclick="startListening()">🎙️</button>
-
-<div class="mic-label" id="micLabel">
-TAP TO ACTIVATE VOICE COMMAND
-</div>
-
-<div class="command-input">
-
-<input
-type="text"
-id="commandInput"
-placeholder="Enter a command for JARVIS..."
-onkeydown="if(event.key==='Enter')sendCommand()"
->
-
-<button onclick="sendCommand()">EXECUTE ↗</button>
-
-</div>
-
-<div class="jarvis-response">
-
-<div class="response-title">JARVIS RESPONSE</div>
-
-<p id="jarvisResponse">
-Good day, Eshan. JARVIS systems are online.
-How may I assist you with the Eshan Universe?
-</p>
-
-</div>
-
-</div>
-
-<div class="system-panel">
-
-<h3>JARVIS SYSTEM STATUS</h3>
-
-<div class="system-grid">
-
-<div class="system-item">
-VOICE RECOGNITION
-<span id="voiceStatus">READY</span>
-</div>
-
-<div class="system-item">
-COMMAND PROCESSOR
-<span>ACTIVE</span>
-</div>
-
-<div class="system-item">
-AUDIO ENGINE
-<span id="audioStatus">READY</span>
-</div>
-
-<div class="system-item">
-NAVIGATION SYSTEM
-<span>ONLINE</span>
-</div>
-
-</div>
-
-</div>
-
-<div class="commands-help">
-
-<h3>AVAILABLE COMMANDS</h3>
-
-<div class="command-examples">
-
-<div class="command-example">"Hello Jarvis"</div>
-<div class="command-example">"Go to Home"</div>
-<div class="command-example">"Show Movies"</div>
-<div class="command-example">"Show Characters"</div>
-<div class="command-example">"Open Timeline"</div>
-<div class="command-example">"Open Archive"</div>
-<div class="command-example">"Explain Website"</div>
-<div class="command-example">"Explain Movies"</div>
-<div class="command-example">"Explain Characters"</div>
-<div class="command-example">"What can you do?"</div>
-<div class="command-example">"Go Back"</div>
-<div class="command-example">"Stop Speaking"</div>
-
-</div>
-
-</div>
+    <button class="btn" onclick="showPage('home')">RETURN HOME →</button>
+  </div>
+</section>
 
 </main>
 
 <footer>
-© 2026 <span>ESHAN UNIVERSE</span> — ALL RIGHTS RESERVED<br>
-VERSION 6.0 | POWERED BY JARVIS
+  ESHAN'S UNIVERSE · V6.1 · A WORLD WITHOUT LIMITS
 </footer>
 
 <script>
 
-/* PAGE NAVIGATION */
+/* =================================
+   PAGE NAVIGATION
+================================= */
 
-let previousPage='home';
-let currentPage='home';
-
-function showPage(pageId){
-
-const selectedPage=document.getElementById(pageId);
-
-if(!selectedPage)return;
-
-if(currentPage!==pageId){
-previousPage=currentPage;
-}
-
-document.querySelectorAll('.page').forEach(page=>{
-page.classList.remove('active');
-});
-
-selectedPage.classList.add('active');
-
-currentPage=pageId;
-
-document.querySelectorAll('.nav-links button').forEach(button=>{
-button.classList.toggle(
-'active',
-button.dataset.page===pageId
-);
-});
-
-document.getElementById('navLinks').classList.remove('active');
-
-window.scrollTo({top:0,behavior:'smooth'});
-
-}
-
-/* MOBILE MENU */
-
-function toggleMenu(){
-document.getElementById('navLinks').classList.toggle('active');
-}
-
-/* MOVIE DATABASE */
-
-const movies=[
-
-{
-number:"MOVIE 001",
-title:"THE AGE OF AI",
-summary:"The Age of AI introduces a fictional world where artificial intelligence becomes more than ordinary technology. New AI beings, extraordinary abilities and powerful discoveries begin to change the direction of the world. It is the beginning of a much larger story.",
-connection:"This movie establishes the foundation of the Eshan Universe and introduces the world in which future stories take place.",
-status:"UNIVERSE FOUNDATION"
-},
-
-{
-number:"MOVIE 002",
-title:"THE JARVIS QUEST",
-summary:"The Jarvis Quest follows Jarvis, an advanced humanoid AI, on an extraordinary journey. As the story develops, new mysteries, abilities and possibilities begin to emerge. Jarvis is not an ordinary machine — he is a major force in this universe.",
-connection:"This chapter expands the AI world introduced in The Age of AI and gives Jarvis his own journey.",
-status:"CHARACTER STORY"
-},
-
-{
-number:"MOVIE 003",
-title:"THE RISE OF EARTH",
-summary:"The Rise of Earth explores a new chapter in the Eshan Universe. The world faces an uncertain future as technology, humanity and powerful new developments become increasingly connected.",
-connection:"This story expands the universe beyond its earlier chapters and explores the future of Earth.",
-status:"WORLD EXPANSION"
-},
-
-{
-number:"SPECIAL PROJECT",
-title:"PROJECT INFINITY CORE",
-summary:"Project Infinity Core is one of the most mysterious elements of the Eshan Universe. Its origin, purpose and full potential remain classified.",
-connection:"This classified project connects to the wider universe and its hidden mysteries.",
-status:"CLASSIFIED"
-}
-
+const pages = [
+  "home","imagination","movies","characters",
+  "timeline","archive","jarvis","about"
 ];
 
-function openMovie(index){
+function showPage(id){
+  if(!pages.includes(id)) return;
 
-const movie=movies[index];
+  document.querySelectorAll(".page").forEach(page=>{
+    page.classList.remove("active");
+  });
 
-if(!movie)return;
+  const target=document.getElementById(id);
+  if(!target) return;
 
-document.getElementById('movieNumber').textContent=movie.number;
-document.getElementById('movieTitle').textContent=movie.title;
-document.getElementById('movieSummary').textContent=movie.summary;
-document.getElementById('movieConnection').textContent=movie.connection;
-document.getElementById('movieStatus').textContent=movie.status;
+  target.classList.add("active");
 
-const detail=document.getElementById('movieDetail');
+  document.querySelectorAll(".nav-links button").forEach(btn=>{
+    btn.classList.toggle("active",btn.dataset.page===id);
+  });
 
-detail.style.display='block';
-
-setTimeout(()=>{
-detail.scrollIntoView({behavior:'smooth',block:'start'});
-},100);
-
+  window.scrollTo({top:0,behavior:"smooth"});
 }
 
-function closeMovie(){
+/* =================================
+   UNIVERSE DATA
+================================= */
 
-document.getElementById('movieDetail').style.display='none';
+const movies=[
+  {
+    name:"THE AGE OF AI",
+    type:"SCI-FI UNIVERSE",
+    description:"A new era begins as artificial intelligence becomes part of a changing world."
+  },
+  {
+    name:"THE JARVIS QUEST",
+    type:"AI ADVENTURE",
+    description:"An advanced AI begins a journey of discovery, intelligence and evolution."
+  },
+  {
+    name:"THE RISE OF EARTH",
+    type:"COSMIC STORY",
+    description:"A story about Earth, its future and the forces that shape its destiny."
+  },
+  {
+    name:"PROJECT INFINITY CORE",
+    type:"CLASSIFIED PROJECT",
+    description:"A mysterious project hidden inside the classified archive of Eshan's Universe."
+  }
+];
 
-window.scrollTo({top:0,behavior:'smooth'});
+const characters=[
+  ["ESHAN","HUMAN CREATOR","The creator behind Eshan's Universe."],
+  ["JARVIS","ADVANCED AI","A personal AI assistant with a powerful digital identity."],
+  ["GPT","ADVANCED AI","An intelligent AI system and part of the universe."],
+  ["SORA","PREMIUM AI","A creative intelligence associated with visual imagination."],
+  ["GALAXYUS","COSMIC AI","A mysterious intelligence with a cosmic identity."],
+  ["GLACIER","ICE-THEMED AI","An AI character with a cold and calculated identity."],
+  ["DR. OCTOPUS","VILLAIN","A fictional antagonist with a brilliant mind."],
+  ["THE PROTOTYPE","EXPERIMENTAL AI","An experimental artificial intelligence."],
+  ["MUSKAN","HUMAN","A human character in the fictional universe."]
+];
 
+const timeline=[
+  ["THE BEGINNING","The first ideas that started Eshan's Universe."],
+  ["THE AGE OF AI","Artificial intelligence becomes a central part of the story."],
+  ["THE JARVIS QUEST","JARVIS enters the universe."],
+  ["THE RISE OF EARTH","The story expands towards a larger world."],
+  ["PROJECT INFINITY CORE","A mysterious classified project emerges."]
+];
+
+/* RENDER MOVIES */
+
+const movieGrid=document.getElementById("movieGrid");
+
+movies.forEach((movie,index)=>{
+  const card=document.createElement("div");
+  card.className="card movie-card";
+
+  card.innerHTML=`
+    <div class="movie-number">PROJECT 0${index+1}</div>
+    <h3>${movie.name}</h3>
+    <p>${movie.type}</p>
+    <span class="card-action">VIEW DETAILS ↓</span>
+    <div class="movie-detail">${movie.description}</div>
+  `;
+
+  card.addEventListener("click",()=>{
+    card.querySelector(".movie-detail").classList.toggle("show");
+  });
+
+  movieGrid.appendChild(card);
+});
+
+/* RENDER CHARACTERS */
+
+const characterGrid=document.getElementById("characterGrid");
+
+characters.forEach((character,index)=>{
+  const card=document.createElement("div");
+  card.className="card character-card";
+
+  card.innerHTML=`
+    <div class="movie-number">ENTITY 0${index+1}</div>
+    <h3>${character[0]}</h3>
+    <div class="character-role">${character[1]}</div>
+    <p style="margin-top:12px">${character[2]}</p>
+  `;
+
+  characterGrid.appendChild(card);
+});
+
+/* RENDER TIMELINE */
+
+const timelineList=document.getElementById("timelineList");
+
+timeline.forEach((item,index)=>{
+  const element=document.createElement("div");
+  element.className="timeline-item";
+
+  element.innerHTML=`
+    <h3>${item[0]}</h3>
+    <p>${item[1]}</p>
+  `;
+
+  timelineList.appendChild(element);
+});
+
+/* DYNAMIC COUNTS */
+
+document.getElementById("projectCount").textContent=
+  String(movies.length).padStart(2,"0");
+
+document.getElementById("characterCount").textContent=
+  String(characters.length).padStart(2,"0");
+
+document.getElementById("timelineCount").textContent=
+  String(timeline.length).padStart(2,"0");
+
+/* =================================
+   ARCHIVE DEMO
+================================= */
+
+function unlockArchive(){
+  const code=document.getElementById("archiveCode").value.trim();
+  const message=document.getElementById("archiveMessage");
+
+  if(code==="001"){
+    message.textContent="ACCESS GRANTED — DEMO ARCHIVE UNLOCKED.";
+    message.style.color="#65f5ad";
+
+    setTimeout(()=>{
+      message.textContent="PROJECT INFINITY CORE — CLASSIFIED DATA SIMULATION.";
+    },1200);
+  }else{
+    message.textContent="ACCESS DENIED — INVALID ACCESS CODE.";
+    message.style.color="#ff647c";
+  }
 }
 
-/* JARVIS CORE */
+/* =================================
+   JARVIS VOICE SYSTEM
+================================= */
 
-const jarvisPage=document.getElementById('jarvis');
-const jarvisState=document.getElementById('jarvisState');
-const jarvisResponse=document.getElementById('jarvisResponse');
-const micButton=document.getElementById('micButton');
-const micLabel=document.getElementById('micLabel');
-
+let voiceEnabled=true;
+let soundEnabled=true;
+let selectedVoice=null;
 let recognition=null;
-let isSpeaking=false;
+let listening=false;
 
-function setJarvisMode(mode){
+function loadVoices(){
+  if(!("speechSynthesis" in window)) return;
 
-jarvisPage.classList.remove(
-'listening','thinking','speaking'
-);
+  const voices=window.speechSynthesis.getVoices();
 
-if(mode!=='standby'){
-jarvisPage.classList.add(mode);
+  selectedVoice=
+    voices.find(v=>/en-US/i.test(v.lang) && /male|david|mark|guy|daniel/i.test(v.name))
+    || voices.find(v=>/en-US/i.test(v.lang))
+    || voices.find(v=>/^en/i.test(v.lang))
+    || null;
 }
 
-const states={
-standby:'SYSTEM STANDBY',
-listening:'LISTENING...',
-thinking:'PROCESSING COMMAND...',
-speaking:'JARVIS SPEAKING...'
-};
-
-jarvisState.textContent=states[mode]||'SYSTEM STANDBY';
-
+if("speechSynthesis" in window){
+  loadVoices();
+  window.speechSynthesis.onvoiceschanged=loadVoices;
 }
-
-/* JARVIS SPEECH */
 
 function speak(text){
+  if(!voiceEnabled) return;
 
-if(!('speechSynthesis' in window)){
-return;
-}
+  if(!("speechSynthesis" in window)){
+    setState("VOICE NOT SUPPORTED");
+    return;
+  }
 
-window.speechSynthesis.cancel();
+  window.speechSynthesis.cancel();
 
-isSpeaking=true;
+  const utterance=new SpeechSynthesisUtterance(text);
 
-setJarvisMode('speaking');
+  if(selectedVoice) utterance.voice=selectedVoice;
 
-document.getElementById('audioStatus').textContent='ACTIVE';
+  utterance.lang=selectedVoice?.lang || "en-US";
+  utterance.rate=.88;
+  utterance.pitch=.72;
+  utterance.volume=1;
 
-const speech=new SpeechSynthesisUtterance(text);
+  utterance.onstart=()=>setState("JARVIS SPEAKING");
+  utterance.onend=()=>setState("SYSTEM STANDBY");
+  utterance.onerror=()=>setState("VOICE UNAVAILABLE");
 
-speech.lang='en-US';
-speech.rate=0.95;
-speech.pitch=0.85;
-speech.volume=1;
-
-speech.onend=()=>{
-isSpeaking=false;
-document.getElementById('audioStatus').textContent='READY';
-setJarvisMode('standby');
-};
-
-speech.onerror=()=>{
-isSpeaking=false;
-document.getElementById('audioStatus').textContent='READY';
-setJarvisMode('standby');
-};
-
-window.speechSynthesis.speak(speech);
-
+  window.speechSynthesis.speak(utterance);
 }
 
 function stopSpeaking(){
-
-if('speechSynthesis' in window){
-window.speechSynthesis.cancel();
+  if("speechSynthesis" in window){
+    window.speechSynthesis.cancel();
+  }
+  setState("SYSTEM STANDBY");
 }
 
-isSpeaking=false;
+function toggleVoice(){
+  voiceEnabled=!voiceEnabled;
 
-document.getElementById('audioStatus').textContent='READY';
+  if(!voiceEnabled) stopSpeaking();
 
-setJarvisMode('standby');
-
-jarvisResponse.textContent='Voice output stopped. Awaiting your next command.';
-
+  setResponse("Voice system "+(voiceEnabled?"activated.":"deactivated."));
+  playTone(voiceEnabled?600:300,.1);
 }
 
-/* RESPONSE */
-
-function respond(text,voice=true){
-
-jarvisResponse.textContent=text;
-
-if(voice){
-speak(text);
-}else{
-setJarvisMode('standby');
+function toggleSound(){
+  soundEnabled=!soundEnabled;
+  setResponse("Sound effects "+(soundEnabled?"enabled.":"disabled."));
 }
 
+/* =================================
+   SOUND EFFECTS
+================================= */
+
+let audioContext=null;
+
+function playTone(frequency=500,duration=.12){
+  if(!soundEnabled) return;
+
+  try{
+    audioContext=audioContext || new (window.AudioContext||window.webkitAudioContext)();
+
+    if(audioContext.state==="suspended"){
+      audioContext.resume();
+    }
+
+    const oscillator=audioContext.createOscillator();
+    const gain=audioContext.createGain();
+
+    oscillator.type="sine";
+    oscillator.frequency.value=frequency;
+
+    gain.gain.setValueAtTime(.07,audioContext.currentTime);
+    gain.gain.exponentialRampToValueAtTime(
+      .001,audioContext.currentTime+duration
+    );
+
+    oscillator.connect(gain);
+    gain.connect(audioContext.destination);
+
+    oscillator.start();
+    oscillator.stop(audioContext.currentTime+duration);
+  }catch(error){}
 }
 
-/* WEBSITE KNOWLEDGE */
+/* =================================
+   JARVIS RESPONSE SYSTEM
+================================= */
 
-const pageDescriptions={
-
-home:"Welcome to Eshan Universe. This is the main homepage. Here you can discover the cinematic world, explore movies, meet characters and access the different sections of the universe.",
-
-movies:"The Movie Library contains four major entries: The Age of AI, The Jarvis Quest, The Rise of Earth and Project Infinity Core. Each movie has its own story summary and universe connection.",
-
-characters:"The Character Database contains Eshan, Jarvis, GPT, Sora, Galaxyus, Glacier, Dr. Octopus, The Prototype and Muskan. These characters belong to the Eshan Universe.",
-
-timeline:"The Universe Timeline describes five major stages: The Beginning, The Age of AI, The Jarvis Quest, The Rise of Earth and Project Infinity Core.",
-
-archive:"The Classified Archive contains Project Infinity Core, a mysterious fictional project within the Eshan Universe. Its access status is restricted.",
-
-about:"Eshan Universe is a fictional cinematic world created through imagination and creativity. It features artificial intelligence, humans, mysterious projects, extraordinary characters and connected stories.",
-
-jarvis:"This is the JARVIS Control Center. You can use voice or text commands to navigate the Eshan Universe and learn about its different sections."
-
-};
-
-/* COMMAND PROCESSOR */
-
-function processCommand(rawCommand){
-
-const command=rawCommand.toLowerCase().trim();
-
-if(!command)return;
-
-setJarvisMode('thinking');
-
-jarvisResponse.textContent='Analyzing your command...';
-
-setTimeout(()=>{
-
-/* GREETING */
-
-if(
-command.includes('hello')||
-command.includes('hi jarvis')||
-command.includes('hey jarvis')||
-command.includes('good morning')||
-command.includes('good evening')
-){
-
-respond('Good day, Eshan. JARVIS systems are fully operational. The Eshan Universe is ready.');
-
-return;
-
+function setResponse(message){
+  document.getElementById("jarvisResponse").textContent=message;
+  playTone(520,.08);
 }
 
-/* STOP VOICE */
-
-if(
-command.includes('stop speaking')||
-command.includes('stop talking')||
-command==='stop'
-){
-
-stopSpeaking();
-
-return;
-
+function setState(message){
+  document.getElementById("jarvisState").textContent=message;
 }
 
-/* HOME */
+let commandLog=[];
 
-if(
-command.includes('go to home')||
-command==='home'||
-command.includes('open home')||
-command.includes('show home')
-){
+function addHistory(command){
+  commandLog.unshift(command);
+  commandLog=commandLog.slice(0,4);
 
-showPage('home');
-
-respond('Certainly, Eshan. Returning to the main homepage of Eshan Universe.');
-
-return;
-
+  document.getElementById("commandHistory").innerHTML=
+    commandLog.map((item,index)=>
+      `<div>${index+1}. ${escapeHTML(item)}</div>`
+    ).join("");
 }
 
-/* MOVIES */
-
-if(
-command.includes('show movies')||
-command.includes('open movies')||
-command.includes('movie library')||
-command.includes('go to movies')
-){
-
-showPage('movies');
-
-respond('Opening the Movie Library. Four cinematic entries are currently available in your universe.');
-
-return;
-
+function escapeHTML(value){
+  return String(value).replace(/[&<>"']/g,char=>({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#039;"
+  })[char]);
 }
 
-/* CHARACTERS */
+function runCommand(raw){
+  const command=raw.trim();
+  if(!command) return;
 
-if(
-command.includes('show characters')||
-command.includes('open characters')||
-command.includes('character database')||
-command.includes('go to characters')
-){
+  const c=command.toLowerCase();
+  let response="I'm sorry, Eshan. I don't recognize that command yet.";
 
-showPage('characters');
+  addHistory(command);
 
-respond('Opening the Character Database. All registered universe characters are now available.');
+  if(/^(hey |hello |hi |good morning|good evening)/i.test(c)){
+    response="Hello Eshan. All systems are operational. How can I assist you today?";
+  }
 
-return;
+  else if(c.includes("stop speaking") || c.includes("stop voice")){
+    stopSpeaking();
+    setResponse("Voice output stopped.");
+    return;
+  }
 
+  else if(c.includes("protocol infinity")){
+    response="Protocol Infinity detected. Redirecting to the classified archive interface.";
+    showPage("archive");
+  }
+
+  else if(c.includes("combat mode") || c.includes("red alert")){
+    document.body.classList.add("red-alert");
+    response="Red Alert activated. Visual interface switched to Combat Mode.";
+  }
+
+  else if(c.includes("normal mode") || c.includes("reset mode")){
+    document.body.classList.remove("red-alert");
+    response="Normal mode restored. Systems stable.";
+  }
+
+  else if(c.includes("system status") || c.includes("status report")){
+    response=`System report. Universe projects: ${movies.length}. Characters: ${characters.length}. Timeline events: ${timeline.length}. JARVIS status: Online.`;
+  }
+
+  else if(c.includes("scan")){
+    response="Scanning Eshan's Universe. Projects detected. Character database available. Timeline synchronized. Archive interface detected. Scan complete.";
+    playTone(850,.2);
+  }
+
+  else if(c.includes("who created") || c.includes("your creator") || c.includes("who is your creator")){
+    response="I was created as part of Eshan's Universe. My creator is Eshan.";
+  }
+
+  else if(c.includes("what can you do") || c.includes("your abilities")){
+    response="I can navigate the universe, provide system reports, explore projects, introduce characters and activate interface modes. My systems are currently in beta.";
+  }
+
+  else if(c.includes("movies") || c.includes("stories")){
+    response="Opening the cinematic collection. Here you can explore all four universe projects.";
+    showPage("movies");
+  }
+
+  else if(c.includes("characters")){
+    response="Opening character database. All registered universe characters are available.";
+    showPage("characters");
+  }
+
+  else if(c.includes("timeline")){
+    response="Opening universe timeline. Five major events are currently registered.";
+    showPage("timeline");
+  }
+
+  else if(c.includes("archive") || c.includes("classified")){
+    response="Opening classified archive interface. Authentication is required.";
+    showPage("archive");
+  }
+
+  else if(c.includes("jarvis")){
+    response="JARVIS systems are active. I am ready to assist you.";
+    showPage("jarvis");
+  }
+
+  else if(c.includes("about")){
+    response="Opening the information section of Eshan's Universe.";
+    showPage("about");
+  }
+
+  else if(c.includes("home")){
+    response="Returning to the main interface. Welcome back to Eshan's Universe.";
+    showPage("home");
+  }
+
+  else if(c.includes("time")){
+    response="The current time on your device is "+new Date().toLocaleTimeString()+".";
+  }
+
+  else if(c.includes("current page")){
+    const active=document.querySelector(".page.active");
+    response="You are currently viewing the "+(active?.id||"unknown")+" section.";
+  }
+
+  else if(c.includes("who are you")){
+    response="I am JARVIS. Your experimental personal AI assistant inside Eshan's Universe.";
+  }
+
+  else if(c.includes("eshan")){
+    response="Eshan is the creator of this universe. The imagination behind this digital world.";
+  }
+
+  else if(c.includes("voice")){
+    response="My voice output uses your browser's speech synthesis system. Voice settings depend on the available device voices.";
+  }
+
+  setResponse(response);
+  speak(response);
 }
-
-/* TIMELINE */
-
-if(
-command.includes('open timeline')||
-command.includes('show timeline')||
-command.includes('go to timeline')
-){
-
-showPage('timeline');
-
-respond('Opening the Universe Timeline. You can now explore the major events in chronological order.');
-
-return;
-
-}
-
-/* ARCHIVE */
-
-if(
-command.includes('open archive')||
-command.includes('show archive')||
-command.includes('go to archive')||
-command.includes('classified archive')
-){
-
-showPage('archive');
-
-respond('Accessing the Classified Archive. Project Infinity Core records are available for exploration.');
-
-return;
-
-}
-
-/* ABOUT */
-
-if(
-command.includes('open about')||
-command.includes('about page')||
-command.includes('about universe')||
-command.includes('go to about')
-){
-
-showPage('about');
-
-respond('Opening the About section. Here you can learn about the creator and the purpose of Eshan Universe.');
-
-return;
-
-}
-
-/* JARVIS PAGE */
-
-if(
-command.includes('open jarvis')||
-command.includes('jarvis center')||
-command.includes('jarvis control center')
-){
-
-showPage('jarvis');
-
-respond('Welcome to JARVIS Control Center. All available navigation systems are ready.');
-
-return;
-
-}
-
-/* BACK */
-
-if(
-command.includes('go back')||
-command==='back'||
-command.includes('previous page')
-){
-
-const target=previousPage;
-
-showPage(target);
-
-respond('Returning to the previous section.');
-
-return;
-
-}
-
-/* WHAT CAN YOU DO */
-
-if(
-command.includes('what can you do')||
-command.includes('your abilities')||
-command.includes('your features')
-){
-
-respond('I am JARVIS, your Eshan Universe assistant. I can navigate the website, explain its sections, describe movies, identify characters and provide information about the universe.');
-
-return;
-
-}
-
-/* WEBSITE EXPLANATION */
-
-if(
-command.includes('explain website')||
-command.includes('explain universe')||
-command.includes('about website')||
-command.includes('describe website')
-){
-
-respond('Eshan Universe is a futuristic fictional world. It contains a Movie Library, Character Database, Universe Timeline, Classified Archive, About section and my own JARVIS Control Center. I can help you explore every section.');
-
-return;
-
-}
-
-/* CURRENT PAGE EXPLANATION */
-
-if(command.includes('explain this page')||
-command.includes('explain current page')){
-
-respond(pageDescriptions[currentPage]);
-
-return;
-
-}
-
-/* SPECIFIC EXPLANATIONS */
-
-if(command.includes('explain movies')||
-command.includes('describe movies')){
-
-respond(pageDescriptions.movies);
-
-return;
-
-}
-
-if(command.includes('explain characters')||
-command.includes('describe characters')){
-
-respond(pageDescriptions.characters);
-
-return;
-
-}
-
-if(command.includes('explain timeline')){
-
-respond(pageDescriptions.timeline);
-
-return;
-
-}
-
-if(command.includes('explain archive')){
-
-respond(pageDescriptions.archive);
-
-return;
-
-}
-
-if(command.includes('explain about')){
-
-respond(pageDescriptions.about);
-
-return;
-
-}
-
-if(command.includes('explain jarvis')){
-
-respond(pageDescriptions.jarvis);
-
-return;
-
-}
-
-/* CREATOR */
-
-if(
-command.includes('who created')||
-command.includes('who is the creator')
-){
-
-respond('Eshan is the creator of Eshan Universe. He designed this fictional world around artificial intelligence, characters, movies and extraordinary stories.');
-
-return;
-
-}
-
-/* TIME */
-
-if(
-command.includes('what time')||
-command.includes('current time')
-){
-
-const time=new Date().toLocaleTimeString('en-US',{
-hour:'numeric',
-minute:'2-digit'
-});
-
-respond('The current time is '+time+'.');
-
-return;
-
-}
-
-/* UNKNOWN COMMAND */
-
-respond('I received your command, Eshan, but this function is not currently available in my command database. Please try another command.');
-
-},350);
-
-}
-
-/* TEXT COMMAND */
 
 function sendCommand(){
+  const input=document.getElementById("commandInput");
+  const value=input.value.trim();
 
-const input=document.getElementById('commandInput');
+  if(!value) return;
 
-const command=input.value.trim();
-
-if(!command)return;
-
-input.value='';
-
-processCommand(command);
-
+  runCommand(value);
+  input.value="";
 }
 
-/* VOICE RECOGNITION */
-
-const SpeechRecognition=
-window.SpeechRecognition||
-window.webkitSpeechRecognition;
-
-if(SpeechRecognition){
-
-recognition=new SpeechRecognition();
-
-recognition.lang='en-US';
-recognition.continuous=false;
-recognition.interimResults=false;
-
-recognition.onstart=()=>{
-
-setJarvisMode('listening');
-
-micButton.classList.add('recording');
-
-micLabel.textContent='JARVIS IS LISTENING...';
-
-document.getElementById('voiceStatus').textContent='LISTENING';
-
-};
-
-recognition.onresult=(event)=>{
-
-const transcript=event.results[0][0].transcript;
-
-jarvisResponse.textContent='You: '+transcript;
-
-micLabel.textContent='COMMAND RECEIVED';
-
-processCommand(transcript);
-
-};
-
-recognition.onerror=(event)=>{
-
-micButton.classList.remove('recording');
-
-setJarvisMode('standby');
-
-micLabel.textContent='VOICE ERROR: '+event.error;
-
-document.getElementById('voiceStatus').textContent='READY';
-
-};
-
-recognition.onend=()=>{
-
-micButton.classList.remove('recording');
-
-document.getElementById('voiceStatus').textContent='READY';
-
-if(!isSpeaking){
-setJarvisMode('standby');
+function quickCommand(command){
+  runCommand(command);
 }
 
-if(micLabel.textContent==='JARVIS IS LISTENING...'){
-micLabel.textContent='TAP TO ACTIVATE VOICE COMMAND';
-}
-
-};
-
-}else{
-
-document.getElementById('voiceStatus').textContent='UNSUPPORTED';
-
-micLabel.textContent='VOICE RECOGNITION NOT SUPPORTED';
-
-}
-
-/* START LISTENING */
-
-function startListening(){
-
-if(!recognition){
-
-respond('Voice recognition is not supported in this browser. Please use Google Chrome or enter your command using the text box.');
-
-return;
-
-}
-
-try{
-
-recognition.start();
-
-}catch(error){
-
-micLabel.textContent='PLEASE WAIT AND TRY AGAIN';
-
-}
-
-}
-
-/* PARTICLES */
-
-const canvas=document.getElementById('particles');
-const ctx=canvas.getContext('2d');
-
-let particles=[];
-
-function resizeCanvas(){
-
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-
-}
-
-window.addEventListener('resize',resizeCanvas);
-
-resizeCanvas();
-
-for(let i=0;i<85;i++){
-
-particles.push({
-
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-size:Math.random()*1.8+.3,
-speed:Math.random()*.35+.08,
-opacity:Math.random()*.7+.2
-
+document.getElementById("commandInput").addEventListener("keydown",event=>{
+  if(event.key==="Enter") sendCommand();
 });
 
+/* =================================
+   SPEECH RECOGNITION
+================================= */
+
+function startListening(){
+  const SpeechRecognition=
+    window.SpeechRecognition || window.webkitSpeechRecognition;
+
+  if(!SpeechRecognition){
+    setResponse("Voice recognition is not supported by this browser. Please use the command input.");
+    speak("Voice recognition is not supported. Please use the command input.");
+    return;
+  }
+
+  if(listening && recognition){
+    recognition.stop();
+    return;
+  }
+
+  recognition=new SpeechRecognition();
+  recognition.lang="en-US";
+  recognition.continuous=false;
+  recognition.interimResults=false;
+
+  recognition.onstart=()=>{
+    listening=true;
+    setState("LISTENING...");
+    document.getElementById("jarvisCorePanel").classList.add("listening");
+    playTone(700,.15);
+  };
+
+  recognition.onresult=event=>{
+    const transcript=event.results[0][0].transcript;
+    document.getElementById("commandInput").value=transcript;
+    runCommand(transcript);
+  };
+
+  recognition.onerror=()=>{
+    setResponse("Microphone input failed. Check browser microphone permission or type your command.");
+  };
+
+  recognition.onend=()=>{
+    listening=false;
+    setState("SYSTEM STANDBY");
+    document.getElementById("jarvisCorePanel").classList.remove("listening");
+  };
+
+  try{
+    recognition.start();
+  }catch(error){
+    listening=false;
+    setState("SYSTEM STANDBY");
+  }
+}
+
+/* =================================
+   PARTICLE ANIMATION
+================================= */
+
+const canvas=document.getElementById("particles");
+const ctx=canvas.getContext("2d");
+
+let particles=[];
+let width,height;
+
+function resizeCanvas(){
+  width=canvas.width=window.innerWidth;
+  height=canvas.height=window.innerHeight;
+
+  particles=Array.from({length:75},()=>({
+    x:Math.random()*width,
+    y:Math.random()*height,
+    size:Math.random()*1.8+.3,
+    speed:Math.random()*.35+.08,
+    alpha:Math.random()*.6+.15
+  }));
 }
 
 function animateParticles(){
+  ctx.clearRect(0,0,width,height);
 
-ctx.clearRect(0,0,canvas.width,canvas.height);
+  particles.forEach(p=>{
+    p.y-=p.speed;
 
-particles.forEach(p=>{
+    if(p.y<0){
+      p.y=height;
+      p.x=Math.random()*width;
+    }
 
-p.y-=p.speed;
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+    ctx.fillStyle=`rgba(100,215,255,${p.alpha})`;
+    ctx.fill();
+  });
 
-if(p.y<0){
-
-p.y=canvas.height;
-p.x=Math.random()*canvas.width;
-
+  requestAnimationFrame(animateParticles);
 }
 
-ctx.beginPath();
+window.addEventListener("resize",resizeCanvas);
 
-ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
-
-ctx.fillStyle=`rgba(130,190,255,${p.opacity})`;
-
-ctx.fill();
-
-});
-
-requestAnimationFrame(animateParticles);
-
-}
-
+resizeCanvas();
 animateParticles();
+
+/* =================================
+   INITIALIZATION
+================================= */
+
+window.addEventListener("load",()=>{
+  setTimeout(()=>{
+    document.getElementById("loader").classList.add("hide");
+  },1300);
+});
 
 </script>
 
